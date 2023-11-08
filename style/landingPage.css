@@ -1,3 +1,50 @@
 body {
   background-color: black;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-image: url("../images//X_logo_2023_original.svg");
+  fill: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.LeftPannel {
+  width: 50%;
+}
+
+.happening {
+  font-size: 64px;
+  color: white;
+}
+
+.joinToday {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.RightPannel {
+  display: flex;
+  flex-direction: column;
+}
+
+.SignUp {
+  display: flex;
+  flex-direction: row;
+  height: 32px;
+  width: 256px;
+  background-color: white;
+  border-radius: 30px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.Apple {
+  margin-top: 15px;
 }
