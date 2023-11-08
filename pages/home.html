@@ -1,34 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../style/home.css">
 </head>
+
 <body>
     <main>
-        <a href="./home.html"><img 
-            class="home-icon" 
-            src="../images/X_logo_2023_original.svg"
-            alt="x-logo"
-            fill="white"
-            ></a>
+        <div class="sidebar-ctn">
 
-        <ul class="side-nav-bar">
-            <li>Home</li>
-            <li>Explore</li>
-            <li>Notifications</li>
-            <li>Messages</li>
-            <li>Lists</li>
-            <li>Bookmarks</li>
-            <li>Communities</li>
-            <li>Profile</li>
-        </ul>
+            <a href="./home.html"><img class="home-icon" src="../images/X_logo_2023_original.svg" alt="x-logo"
+                    fill="white"></a>
+
+            <ul class="side-nav-bar">
+                <li>Home</li>
+                <li>Explore</li>
+                <li>Notifications</li>
+                <li>Messages</li>
+                <li>Lists</li>
+                <li>Bookmarks</li>
+                <li>Communities</li>
+                <li>Profile</li>
+            </ul>
+        </div>
+        <div class="main-ctn">
+            <h2>Following Feed</h2>
+            <div>
+                <div>
+                    <a href="./profile.html"><img class="default-profile-img" src="../images/defaultProfile1.svg" alt="default profile pic"></a>
+                    <input type="text" name="tweet" id="tweet" placeholder="What is happening?"> 
+                </div>
+                <div class="home-post-modal">
+                    <div class="post-type-ctn">
+                        <div class="post-types">
+                            <img src="../images/img.svg" alt="insert image">
+                            <img src="../images/gif.svg" alt="insert gif">
+                            <img src="../images/poll.svg" alt="insert poll">
+                            <img src="../images/emoji.svg" alt="insert emoji">
+                            <button class="post-btn">Post</button>
+                        </div>
+                    </div>
+
+                </div>
+                
+
+
+            </div>
+        </div>
+
     </main>
 
     <footer>
 
     </footer>
 </body>
+
 </html>

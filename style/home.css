@@ -1,6 +1,11 @@
+main {
+  display: flex;
+}
+
 .home-icon {
   max-width: 2rem;
 }
+
 
 .side-nav-bar {
   list-style-type: none;
@@ -12,4 +17,16 @@
 
 .side-nav-bar > li:hover {
   border: 1px solid grey;
+}
+
+.main-ctn{
+  min-width: 33%;
+}
+
+.home-post-modal{
+  display: flex;
+}
+
+.post-type-ctn{
+  display: flex;
 }
