@@ -1,0 +1,17 @@
+.home-icon{
+    max-width: 2rem;
+
+
+}
+
+.side-nav-bar{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1.4rem;
+}
+
+.side-nav-bar > li:hover{
+    border: ;
+}
