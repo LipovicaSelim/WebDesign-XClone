@@ -11,20 +11,37 @@
 <body>
     <main>
         <div class="sidebar-ctn">
+            <div>
 
-            <a href="./home.html"><img class="home-icon" src="../images/X_logo_2023_original.svg" alt="x-logo"
-                    fill="white"></a>
-
-            <ul class="side-nav-bar">
-                <li>Home</li>
-                <li>Explore</li>
-                <li>Notifications</li>
-                <li>Messages</li>
-                <li>Lists</li>
-                <li>Bookmarks</li>
-                <li>Communities</li>
-                <li>Profile</li>
-            </ul>
+                <ul class="side-nav-bar">
+                    <li>
+                    <a href="./home.html"><img class="home-icon" src="../images/X_logo_2023_original.svg" alt="x-logo"></a>
+                    </li>
+                    <li>Home</li>
+                    <li>Explore</li>
+                    <li>Notifications</li>
+                    <li>Messages</li>
+                    <li>Lists</li>
+                    <li>Bookmarks</li>
+                    <li>Communities</li>
+                    <li>Profile</li>
+                    <li>
+                    <input class="post-btn" id="sidebar-post-btn" type="button" value="Post">
+                    </li>
+                </ul>
+            </div>
+                <div class="profile-card-sidebar">
+                    <div>
+                            <img class="profile-pic" src="../images/defaultProfile1.svg" alt="default profile pic">
+                        </div>
+                        <div>
+                            <span class="profile-card-nicknamew">NICKNAME</span>
+                            <div class="profile-card-username">@USERNAME</div>
+                        </div>
+                    <div class="profile-card-options">
+                        <img src="../images/threedots.svg" alt="options">
+                    </div>
+                </div>
         </div>
         <div class="main-ctn">
             <h2>Following Feed</h2>
@@ -40,7 +57,7 @@
                             <img src="../images/gif.svg" alt="insert gif">
                             <img src="../images/poll.svg" alt="insert poll">
                             <img src="../images/emoji.svg" alt="insert emoji">
-                            <input type="button" value="Post">
+                            <button class="post-btn">Post</button>
                         </div>
                     </div>
                 </div>

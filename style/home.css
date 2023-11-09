@@ -1,11 +1,22 @@
+body,html {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+
 main {
   display: flex;
   background-color: black;
   color: #E7E9EA;
+  height: 100vh;
 }
 
 .home-icon {
   max-width: 2rem;
+  background-color: #1D9BF0;
 }
 
 
@@ -15,6 +26,8 @@ main {
   flex-direction: column;
   gap: 1rem;
   font-size: 1.4rem;
+  margin: 0;
+  border-right: 2px solid gray;
 }
 
 .side-nav-bar > li {
@@ -41,4 +54,38 @@ main {
 
 .post-btn{
   background-color: #1D9BF0;
+  padding: 0.8rem 1.3rem;
+  color: #E7E9EA;
+  border-radius: 1rem;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+#sidebar-post-btn{
+  width: 90%;
+}
+
+.sidebar-ctn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-pic {
+  width: 3.2rem;
+}
+
+.profile-card-nickname{
+  font-weight: 900;
+}
+
+.profile-card-username{
+  color: #666B6F;
+  font-size: small;
+}
+
+.profile-card-sidebar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
