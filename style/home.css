@@ -1,5 +1,7 @@
 main {
   display: flex;
+  background-color: black;
+  color: #E7E9EA;
 }
 
 .home-icon {
@@ -15,8 +17,14 @@ main {
   font-size: 1.4rem;
 }
 
+.side-nav-bar > li {
+  display: inline-block;
+  padding: 1rem;
+}
+
 .side-nav-bar > li:hover {
-  border: 1px solid grey;
+  border-radius: 1rem;
+  background-color: #181818;
 }
 
 .main-ctn{
@@ -29,4 +37,8 @@ main {
 
 .post-type-ctn{
   display: flex;
+}
+
+.post-btn{
+  background-color: #1D9BF0;
 }
