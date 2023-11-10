@@ -15,7 +15,8 @@
 
                 <ul class="side-nav-bar">
                     <li>
-                    <a href="./home.html"><img class="home-icon" src="../images/X_logo_2023_original.svg" alt="x-logo"></a>
+                        <a href="./home.html"><img class="home-icon" src="../images/X_logo_2023_original.svg"
+                                alt="x-logo"></a>
                     </li>
                     <li>Home</li>
                     <li>Explore</li>
@@ -26,44 +27,64 @@
                     <li>Communities</li>
                     <li>Profile</li>
                     <li>
-                    <input class="post-btn" id="sidebar-post-btn" type="button" value="Post">
+                        <input class="post-btn" id="sidebar-post-btn" type="button" value="Post">
                     </li>
                 </ul>
             </div>
-                <div class="profile-card-sidebar">
-                    <div>
-                            <img class="profile-pic" src="../images/defaultProfile1.svg" alt="default profile pic">
-                        </div>
-                        <div>
-                            <span class="profile-card-nicknamew">NICKNAME</span>
-                            <div class="profile-card-username">@USERNAME</div>
-                        </div>
-                    <div class="profile-card-options">
-                        <img src="../images/threedots.svg" alt="options">
-                    </div>
+            <div class="profile-card-sidebar">
+                <div>
+                    <img class="profile-pic" src="../images/defaultProfile1.svg" alt="default profile pic">
                 </div>
+                <div>
+                    <span class="profile-card-nicknamew">NICKNAME</span>
+                    <div class="profile-card-username">@USERNAME</div>
+                </div>
+                <div class="profile-card-options">
+                    <img src="../images/threedots.svg" alt="options">
+                </div>
+            </div>
         </div>
         <div class="main-ctn">
             <h2>Following Feed</h2>
-            <div>
+            <div class="post-modal-ctn">
                 <div>
-                    <a href="./profile.html"><img class="default-profile-img" src="../images/defaultProfile1.svg" alt="default profile pic"></a>
-                    <input type="text" name="tweet" id="tweet" placeholder="What is happening?"> 
+                    <a href="./profile.html"><img class="profile-pic" src="../images/defaultProfile1.svg"
+                            alt="default profile pic"></a>
                 </div>
                 <div class="home-post-modal">
+                    <input type="text" name="tweet" id="tweet" placeholder="What is happening?">
                     <div class="post-type-ctn">
                         <div class="post-types">
-                            <img src="../images/img.svg" alt="insert image">
-                            <img src="../images/gif.svg" alt="insert gif">
-                            <img src="../images/poll.svg" alt="insert poll">
-                            <img src="../images/emoji.svg" alt="insert emoji">
-                            <button class="post-btn">Post</button>
+                            <div class="left-types">
+                                <img src="../images/img.svg" alt="insert image">
+                                <img src="../images/gif.svg" alt="insert gif">
+                                <img src="../images/poll.svg" alt="insert poll">
+                                <img src="../images/emoji.svg" alt="insert emoji">
+                            </div>
+                            <div class="right-type">
+                                <button class="post-btn">Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feed-ctn">
+                <div class="feed-post">
+                    <div class="feed-profile-ctn">
+                        <img src="../images/defaultProfile1.svg" alt="default profile pic">
+                    </div>
+                    <div class="feed-username-options">
+                        <div>
+                            <span>username</span>
+                            <span>@username</span>
+                        </div>
+                        <div class="feed-post-options">
+                            <img class="profile-pic" src="../images/threedots.svg" alt="options">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </main>
 
     <footer>

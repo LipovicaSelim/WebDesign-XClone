@@ -41,7 +41,7 @@ main {
 }
 
 .main-ctn{
-  min-width: 33%;
+  min-width: 30%;
 }
 
 .home-post-modal{
@@ -88,4 +88,50 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.post-modal-ctn{
+  display: flex;
+}
+
+.home-post-modal{
+  display: flex;
+  flex-direction: column;
+}
+
+.home-post-modal input[type="text"]{
+  background-color: black;
+  border: none;
+  font-size: 2rem;
+  min-width: 100%;
+  color: #E7E9EA;
+  margin: 0.5rem;
+}
+.home-post-modal input[type="text"]:focus{
+  outline: none;
+}
+
+.post-type-ctn{
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-types {
+  display: flex;
+}
+
+.left-types > img {
+  width: 2rem;
+  margin: 0.4rem;
+}
+
+.feed-username-options{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feed-post{
+  border: 2px solid blueviolet;
+  display: flex;
 }
