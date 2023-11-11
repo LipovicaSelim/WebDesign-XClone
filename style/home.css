@@ -28,20 +28,24 @@ main {
   font-size: 1.4rem;
   margin: 0;
   border-right: 2px solid gray;
+
 }
 
 .side-nav-bar > li {
   display: inline-block;
   padding: 1rem;
+  justify-self: flex-end;
 }
 
 .side-nav-bar > li:hover {
   border-radius: 1rem;
   background-color: #181818;
 }
-
+.side-nav-bar-container {
+  width: 50%;
+}
 .main-ctn{
-  min-width: 30%;
+  min-width: 40%;
 }
 
 .home-post-modal{
@@ -69,6 +73,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 33%;
 }
 
 .profile-pic {
@@ -131,7 +136,41 @@ main {
   align-items: center;
 }
 
-.feed-post{
-  border: 2px solid blueviolet;
+.feed-profile-ctn{
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}
+
+
+
+.feed-post{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.feed-username-options{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.feed-ctn{
+  width: 100%;
+}
+
+.feed-post{
+  width: 100%;
+}
+
+.picture-post{
+  display: block;
+  max-width:70%;
+  max-height:75%;
+  width: auto;
+  height: auto;
+  border: 1px solid gray;
+  border-radius: 1rem;
 }
