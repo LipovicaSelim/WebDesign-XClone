@@ -1,6 +1,24 @@
+body,html {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+
+main {
+  display: flex;
+  background-color: black;
+  color: #E7E9EA;
+  height: 100vh;
+}
+
 .home-icon {
   max-width: 2rem;
+  background-color: #1D9BF0;
 }
+
 
 .side-nav-bar {
   list-style-type: none;
@@ -8,8 +26,151 @@
   flex-direction: column;
   gap: 1rem;
   font-size: 1.4rem;
+  margin: 0;
+  border-right: 2px solid gray;
+
+}
+
+.side-nav-bar > li {
+  display: inline-block;
+  padding: 1rem;
+  justify-self: flex-end;
 }
 
 .side-nav-bar > li:hover {
-  border: 1px solid grey;
+  border-radius: 1rem;
+  background-color: #181818;
+}
+.side-nav-bar-container {
+  width: 50%;
+}
+.main-ctn{
+  min-width: 40%;
+}
+
+.home-post-modal{
+  display: flex;
+}
+
+.post-type-ctn{
+  display: flex;
+}
+
+.post-btn{
+  background-color: #1D9BF0;
+  padding: 0.8rem 1.3rem;
+  color: #E7E9EA;
+  border-radius: 1rem;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+#sidebar-post-btn{
+  width: 90%;
+}
+
+.sidebar-ctn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 33%;
+}
+
+.profile-pic {
+  width: 3.2rem;
+}
+
+.profile-card-nickname{
+  font-weight: 900;
+}
+
+.profile-card-username{
+  color: #666B6F;
+  font-size: small;
+}
+
+.profile-card-sidebar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-modal-ctn{
+  display: flex;
+}
+
+.home-post-modal{
+  display: flex;
+  flex-direction: column;
+}
+
+.home-post-modal input[type="text"]{
+  background-color: black;
+  border: none;
+  font-size: 2rem;
+  min-width: 100%;
+  color: #E7E9EA;
+  margin: 0.5rem;
+}
+.home-post-modal input[type="text"]:focus{
+  outline: none;
+}
+
+.post-type-ctn{
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-types {
+  display: flex;
+}
+
+.left-types > img {
+  width: 2rem;
+  margin: 0.4rem;
+}
+
+.feed-username-options{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feed-profile-ctn{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}
+
+
+
+.feed-post{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.feed-username-options{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.feed-ctn{
+  width: 100%;
+}
+
+.feed-post{
+  width: 100%;
+}
+
+.picture-post{
+  display: block;
+  max-width:70%;
+  max-height:75%;
+  width: auto;
+  height: auto;
+  border: 1px solid gray;
+  border-radius: 1rem;
 }
