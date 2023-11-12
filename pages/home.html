@@ -13,16 +13,15 @@
         <div class="sidebar-ctn">
             <div class="side-nav-bar-ctn">
                 <ul class="side-nav-bar">
-                    <li>
-                        <a href="./home.html"><img  class="home-icon" src="../images/XLOGO.svg" alt="LOGO"></a></li>
-                    <li>Home</li>
-                    <li>Explore</li>
-                    <li>Notifications</li>
-                    <li>Messages</li>
-                    <li>Lists</li>
-                    <li>Bookmarks</li>
-                    <li>Communities</li>
-                    <li>Profile</li>
+                    <li><a href="./home.html"><img  class="home-icon" src="../images/XLOGO.svg" alt="LOGO"></a></li>
+                    <li> <div class="side-nav-row"><img src="../images/home.svg" alt="home icon"><nav>Home</nav></div></li>
+                    <li><div class="side-nav-row"><img src="../images/search.svg" alt="explore"><nav>Explore</nav></li>
+                    <li><div class="side-nav-row"><img src="../images/notifications.svg" alt="notifications"> <nav>Notifications</nav></li>
+                    <li> <div class="side-nav-row"><img src="../images/messages.svg" alt="messages"><nav>Messages</nav></li>
+                    <li> <div class="side-nav-row"><img src="../images/litsts.svg" alt="lists"><nav>Lists</nav></li>
+                    <li><div class="side-nav-row"><img src="../images/bookmarks.svg" alt="bookmarks"><nav>Lists</nav></li>
+                    <li><div class="side-nav-row"><img src="../images/communities.svg" alt="communities"><nav>Lists</nav></li>
+                    <li><div class="side-nav-row"><img src="../images/profile.svg" alt="profile"><nav>Profile</nav></li>
                     <li>
                         <input class="post-btn" id="sidebar-post-btn" type="button" value="Post">
                     </li>
@@ -55,7 +54,7 @@
                             alt="default profile pic"></a>
                 </div>
                 <div class="home-post-modal">
-                    <input type="text" name="tweet" id="tweet" placeholder="What is happening?">
+                    <input type="text" name="tweet" id="tweet" placeholder="What is happening?! ">
                     <div class="post-type-ctn">
                         <div class="post-types">
                             <div class="left-types">
@@ -65,7 +64,7 @@
                                 <img src="../images/emoji.svg" alt="insert emoji">
                             </div>
                             <div class="right-type">
-                                <button class="post-btn">Post</button>
+                                <button class="post-btn post-btn-feed">Post</button>
                             </div>
                         </div>
                     </div>
@@ -80,8 +79,8 @@
                         <div class="feed-username-options">
                             <div>
                                 <span>username</span>
-                                <span>@username</span>
-                                <span>~12H</span>
+                                <span class="profile-card-username username-feed">@username</span>
+                                <span class="profile-card-username">~12H</span>
                             </div>
                             <div class="feed-post-options">
                                 <img class="three-dots-op" src="../images/threedots.svg" alt="options">
@@ -93,6 +92,46 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+        <div class="right-side-bar">
+            <div class="search-bar">
+                <div><img src="../images/graySearch.svg" alt="search img"></div>
+                <div><input type="text" name="search" id="search"></div>
+            </div>
+            <div class="sub-premium-popup">
+                <div><h1>Subscribe to Premium</h1></div>
+                <div><p>Subscribe to unlock new features and if eligible, receive a share of ads revenue.</p></div>
+                <input type="button" value="Subscribe">
+            </div>
+            <div class="live-x">
+                <div><h1>Live on X</h1></div>
+                <div><img src="../images/profile.svg" alt="profile pic">Driloni is hosting</div>
+                <input type="button" value="Join">
+            </div>
+            <div class="trends">
+                <div><h1>Trends For you</h1></div>
+                <div>
+                    <div>
+                        <span>Trending</span>
+                        <span>Sukuna</span>
+                        <span>27K posts</span>
+                    </div>
+                    <div>
+                        <img src="../images/threedots-gray.svg" alt="options">
+                    </div>
+                </div>
+            </div>
+            <div class="follow-sug">
+                <div><h1>Who to follow</h1></div>
+                <div>
+                    <div><img src="../images/defaultProfile1.svg" alt="profile pic"></div>
+                    <div><span>@Username</span><span>Name</span></div>
+                    <div><button type="button">Follow</button></div>
+                </div>
+            </div>
+            <div class="footer">
+                Copyright bla bla
             </div>
         </div>
     </main>
