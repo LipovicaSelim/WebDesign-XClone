@@ -23,7 +23,6 @@ main {
   background-size: contain;
   height: 4rem;
   width: 4rem;
-  border: 1px solid red;
 }
 
 .side-nav-row{
@@ -79,12 +78,12 @@ main {
 
 .main-ctn{
   width: 30%;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
+  border-left: 0.8px solid gray;
+  border-right: 0.8px solid gray;
 }
 
 .feed-mode-ctn {
-  border-bottom: 1px solid gray;
+  border-bottom: 0.8px solid gray;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,7 +138,7 @@ main {
 
 .post-modal-ctn{
   display: flex;
-  border-bottom: 1px solid gray;
+  border-bottom: 0.8px solid gray;
   align-items: flex-start;
   column-gap: 2rem;
 }
@@ -209,7 +208,7 @@ main {
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  border-bottom: 1px solid gray;
+  border-bottom: 0.8px solid gray;
   padding: 2rem;
 }
 
@@ -230,7 +229,7 @@ main {
   max-height:75%;
   width: auto;
   height: auto;
-  border: 1px solid gray;
+  border: 0.8px solid gray;
   border-radius: 1rem;
 }
 
