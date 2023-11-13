@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>XClone</title>
     <link rel="stylesheet" href="../style/landingPage.css" />
+    <script src="./landingPage.js"></script>
   </head>
   <body>
+    <div id="overlay"></div>
     <container class="content">
       <div class="LeftPannel">
         <!-- <img
@@ -20,7 +22,7 @@
         <div class="RightContent">
           <h1 class="happening">Happening now</h1>
           <p class="joinToday">Join today.</p>
-          <div class="SignUp Google">
+          <div id="SignUpModalGoogle" class="SignUp Google button">
             <div>
               <img
                 src="../images/icons8-google.svg"
@@ -30,7 +32,7 @@
             </div>
             <p>Sign Up With Google</p>
           </div>
-          <div class="SignUp Apple">
+          <div class="SignUp Apple button">
             <div><img src="../images/apple-icon.svg" alt="apple-icon" /></div>
             <p>Sign Up With Apple</p>
           </div>
@@ -39,7 +41,133 @@
             <p style="color: white">or</p>
             <div class="border-line"></div>
           </div>
-          <div class="SignUp CreateAccount">Create account</div>
+          <div
+            id="CreateAccountButton"
+            class="SignUp CreateAccount button"
+            onclick="openSignUpModal()"
+          >
+            Create account
+          </div>
+          <!--CREATE ACCOUNT MODAL-->
+          <div id="SignUpModal" class="modal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <span></span>
+                <div class="x-button" onclick="closeSignUpModal()">&times;</div>
+                <div class="steps">Step 1 of 5</div>
+              </div>
+              <div class="modal-field-container">
+                <div class="modal-field-content">
+                  <div class="h2-modal">
+                    <span>Create your account</span>
+                  </div>
+                  <form>
+                    <div class="inputBox">
+                      <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        required="required"
+                      />
+                      <span>Name</span>
+                    </div>
+                  </form>
+
+                  <form>
+                    <div class="inputBox">
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required="required"
+                      />
+                      <span>Email</span>
+                    </div>
+                  </form>
+                  <div class="birthday"><span>Date of birth</span></div>
+                  <div class="confirm-age">
+                    <span
+                      >This will not be shown publicly. Confirm your own age,
+                      even if this account is for a business, a pet, or
+                      something else.</span
+                    >
+                  </div>
+                  <form>
+                    <div class="birthday-forms">
+                      <div class="inputBox">
+                        <span>Month</span>
+                        <select
+                          type="date"
+                          id="month"
+                          aria-invalid="false"
+                          class="birthday-month"
+                          name="month"
+                        >
+                          <option value="january">January</option>
+                          <option value="february">February</option>
+                          <option value="march">March</option>
+                          <option value="april">April</option>
+                          <option value="may">May</option>
+                          <option value="june">June</option>
+                          <option value="july">July</option>
+                          <option value="august">August</option>
+                          <option value="september">September</option>
+                          <option value="october">October</option>
+                          <option value="november">November</option>
+                          <option value="december">December</option>
+                        </select>
+                      </div>
+                      <div class="birdthday-day-box">
+                        <div class="inputBox">
+                          <span>Day</span>
+                          <select
+                            type="date"
+                            id="month"
+                            aria-invalid="false"
+                            class="birthday-day"
+                            name="month"
+                          >
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="TermsPolicies">
             <p>
               By signing up, you agree to the
@@ -48,34 +176,46 @@
             </p>
           </div>
           <div class="SignIn">Already have an account?</div>
-          <div class="SignUp SignIn-Button">Sign in</div>
+          <div class="SignUp SignIn-Button button">Sign in</div>
         </div>
       </div>
     </container>
     <nav class="navbar">
       <div class="nav-links">
-        <navlink>About</navlink>
-        <navlink>Download the X app</navlink>
-        <navlink> Help Center</navlink>
-        <navlink>Terms of Service</navlink>
-        <navlink>Privacy Policy</navlink>
-        <navlink>Cookie Policy</navlink>
-        <navlink>Accessibility</navlink>
-        <navlink>Ads Info</navlink>
-        <navlink>Blog</navlink>
-        <navlink>Status</navlink>
-        <navlink>Careers</navlink>
-        <navlink>Brand Resources</navlink>
-        <navlink>Advertising</navlink>
-        <navlink>Marketing</navlink>
-        <navlink>X for Business</navlink>
-        <navlink>Developers</navlink>
-        <navlink>Directory</navlink>
-        <navlink>Settings</navlink>
+        <a href="localhost:3000/about"><navlink>About</navlink></a>
+        <a href="localhost:3000"><navlink>Download the X app</navlink></a>
+        <a href="localhost:3000/helpcenter"><navlink> Help Center</navlink></a>
+        <a href="localhost:3000/terms"><navlink>Terms of Service</navlink></a>
+        <a href="localhost:3000/privacyPolicies"
+          ><navlink>Privacy Policy</navlink></a
+        >
+        <a href="localhost:3000/cookiepolicies"
+          ><navlink>Cookie Policy</navlink></a
+        >
+        <a href="localhost:3000/Accessibility"
+          ><navlink>Accessibility</navlink></a
+        >
+        <a href="localhost:3000/AdsInfo"><navlink>Ads Info</navlink></a>
+        <a href="localhost:3000/blog"><navlink>Blog</navlink></a>
+        <a href="localhost:3000/status"><navlink>Status</navlink></a>
+        <a href="localhost:3000/careers"><navlink>Careers</navlink></a>
+        <a href="localhost:3000/brandResources"
+          ><navlink>Brand Resources</navlink></a
+        >
+        <a href="localhost:3000/advertising"><navlink>Advertising</navlink></a>
+        <a href="localhost:3000/marketing"><navlink>Marketing</navlink></a>
+        <a href="localhost:3000/xForBusiness"
+          ><navlink>X for Business</navlink></a
+        >
+        <a href="localhost:3000/devs"><navlink>Developers</navlink></a>
+        <a href="localhost:3000/directory"><navlink>Directory</navlink></a>
+        <a href="localhost:3000/setting"><navlink>Settings</navlink></a>
         <div class="copyright">
           &copy; 2023 XClone (this is a clone website)
         </div>
       </div>
     </nav>
+
+    <!--CREATE ACCOUNT MODAL-->
   </body>
 </html>

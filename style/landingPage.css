@@ -70,7 +70,7 @@ body {
 .joinToday {
   font-size: 1.938rem;
   color: #e7e9ea;
-  font-weight: 700;
+  font-weight: 900;
   font-stretch: 100%;
   line-height: 36px;
 }
@@ -120,7 +120,7 @@ body {
 }
 
 .CreateAccount {
-  background-color: #1a8cd8;
+  background-color: rgb(29, 155, 240);
   color: white;
   font-size: 15px;
   font-stretch: 100%;
@@ -149,7 +149,7 @@ body {
 .SignIn-Button {
   background-color: black;
   border: #514f4f 1px solid;
-  color: #1d9bf0;
+  color: rgb(29, 155, 240);
   font-size: 15px;
   margin-top: 15px;
 }
@@ -167,14 +167,275 @@ body {
 .nav-links {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  column-gap: 10px;
   flex-wrap: wrap;
   font-size: 13px;
   width: 90%;
   margin-bottom: 5px;
 }
 
+.nav-links a {
+  color: #71767b;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
 .copyright {
   font-size: 13px;
 }
-/* U BOOOO O SHEEEEF */
+
+.button:hover {
+  background-color: #e6e6e6;
+  transition: background-color;
+  transition-duration: 0.2s;
+}
+
+.CreateAccount:hover {
+  background-color: #1a8cd8;
+}
+
+.SignIn-Button:hover {
+  background-color: #031019;
+}
+
+/* ///////////// CREATE ACCOUNT MODAL ////////////////// */
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(36, 45, 52, 0.5);
+  z-index: 1;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  z-index: 2;
+  width: 600px;
+  height: 650px;
+}
+
+.modal-open {
+  display: flex;
+}
+
+.modal-content {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.close-button {
+  cursor: pointer;
+  float: right;
+  font-size: 20px;
+  color: #aaa;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  background-color: black;
+  border-radius: 20px 20px 0 0px;
+}
+
+.x-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  width: 3vh;
+  height: 3vh;
+  background-color: black;
+  border-radius: 50%;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.x-button:hover {
+  background-color: #282929;
+}
+
+.steps {
+  color: #e7e9ea;
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 30px;
+}
+
+.modal-field-container {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-field-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: #e7e9ea;
+  height: 600px;
+  width: 438px;
+}
+
+form {
+  color: #e7e9ea;
+  width: 100%;
+}
+
+.h2-modal {
+  display: block;
+  width: 100%;
+  text-overflow: unset;
+  margin: 15px 0 15px;
+}
+
+.h2-modal span {
+  color: #e7e9ea;
+  font-size: 31px;
+  font-weight: 700;
+}
+
+.inputBox {
+  position: relative;
+  width: 100%;
+  height: 56px;
+  border-radius: 3px;
+  border: #71767b 1px solid;
+  box-sizing: border-box;
+  display: flex;
+  margin: 15px 0;
+}
+
+/* .label-text {
+  position: absolute;
+  background-color: none;
+  left: 3%;
+  top: 32%;
+  background-color: red;
+  height: 100%;
+  width: 15%;
+  border-radius: 0px 0px 3px 3px;
+  box-sizing: border-box;
+  transform: translateY(-25%);
+  font-size: 20px;
+  color: #71767b;
+  pointer-events: none;
+  transition: top 0.8s ease-out, font-size 0.3s ease-out, color 0.3s ease-out;
+} */
+
+.inputBox span {
+  position: absolute;
+  top: 30%;
+  left: 3%;
+  font-size: 18px;
+  color: #71767b;
+  pointer-events: none;
+}
+
+.inputBox input:focus ~ span,
+.inputBox input:valid ~ span {
+  top: 15%;
+  font-size: 12px;
+  color: #1a8cd8;
+  transform: translateY(-2px);
+  transition: 0.1s linear;
+}
+
+.inputBox input:not(:focus) ~ span {
+  transition: 0.1s linear;
+  color: #71767b;
+}
+
+input {
+  width: 100%;
+  border-radius: 0px 0px 5px 5px;
+  border: 0.5px;
+  border-top: none;
+  box-sizing: border-box;
+  height: 70%;
+  align-self: self-end;
+  background-color: transparent;
+  caret-color: #1a8cd8;
+  font-size: 18px;
+  padding-left: 15px;
+  color: white;
+  z-index: 2;
+}
+
+input:focus {
+  outline: none;
+}
+
+.birthday {
+  width: 100%;
+  color: rgb(234, 228, 228);
+  margin-top: 15px;
+}
+
+.confirm-age {
+  margin-top: 8px;
+}
+
+.confirm-age span {
+  font-size: 14px;
+  color: #71767b;
+}
+
+.birthday-forms {
+  display: flex;
+}
+
+.birthday-month {
+  height: 56px;
+  width: 207px;
+}
+
+.birthday-forms .inputBox {
+  width: 207px;
+  height: 56px;
+  display: flex;
+  align-items: end;
+}
+
+.birthday-forms .inputBox select {
+  background-color: black;
+  color: #e6e6e6;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+}
+
+.birthday-forms .inputBox span {
+  position: absolute;
+  top: 3px;
+  font-size: 13px;
+  color: rgb(113, 118, 123);
+}
+
+.birthday-forms .inputBox {
+  width: 207px;
+  height: 56px;
+  display: flex;
+  align-items: end;
+}
+
+.birthday-day-box .inputBox {
+  height: 56px;
+  width: 166px;
+}
