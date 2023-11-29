@@ -118,6 +118,7 @@ body,html {
   justify-content: center;
   align-items: center;
   position: relative;
+  opacity: 1;
 }
 
 
@@ -135,8 +136,13 @@ body,html {
   border: none;
 }
 
-.post-btn:hover{
-  background-color: rgb(26, 140, 216);
+#post-new-tweet:disabled{
+  background-color: #0F4E78;
+  color: rgb(170, 152, 152);
+}
+
+.post-btn:not([disabled]):hover{
+  background-color: rgb(9, 94, 151);
 }
 
 #sidebar-post-btn{
@@ -261,7 +267,7 @@ body,html {
   font-size: 1.4rem;
   color: #E7E9EA;
   width: 97%;
-  min-height: 50px;
+  /* min-height: 50px; */
   overflow: auto;
   border: none;
   margin-bottom: 1rem;
@@ -281,10 +287,21 @@ body,html {
   gap: 1rem;
 }
 
-.left-types > img {
-  width: 1.4rem;
-
+#choose-img{
+  display: none;
 }
+
+.insert-type-twt {
+  width: 2.2rem;
+  padding: 0.3rem;
+}
+
+.insert-type-ctn:hover{
+  color: #1D9BF0;
+  background-color: hsla(204, 88%, 53%, 0.24);
+  border-radius: 1rem;
+}
+
 
 .post-types{
   display: flex;
