@@ -32,9 +32,7 @@ const createGif = function(){
       })
       .catch(error => console.error('Error fetching GIFs:', error));
 }
-
 console.log(insertGifBtn);
-
 insertGifBtn.addEventListener("click", () => {
   createGif();
 })
@@ -54,3 +52,8 @@ tweetTextInput.addEventListener('input', () => {
 
 // Adjust the height initially in case there is predefined content
 adjustTextareaHeight();
+
+
+// 1282 breakpoint 1 me ja hek txt sidebar
+
+// 1004 e hek ride side bar
