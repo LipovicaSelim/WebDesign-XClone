@@ -566,6 +566,14 @@ body,html {
 
 @media screen and (max-width: 849px) {
 
+  body{
+    width: calc(100vw - 100px);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+  }
+
+
   .sidebar-ctn{
     display: none;
   }

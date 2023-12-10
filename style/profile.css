@@ -1,0 +1,696 @@
+body,html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: black;
+    font-family: "TwitterExtendedHeavy-woff2", sans-serif;
+  } 
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  
+  .screen-ctn {
+    display: flex;
+    justify-content: center;
+    color: #E7E9EA;
+    height: 100%;
+    /* position per header */
+    position: relative;
+  }
+  /* Sidebar */
+  .home-icon {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 60%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  
+  .profile-card-sidebar{
+    display: flex;
+    justify-content: space-between;
+    width: 12%;
+    padding: 0.7rem;
+    padding-right: 0.6rem;
+    margin-bottom: 1rem;
+    position: fixed;
+    bottom: 0px;
+  }
+  
+  /* Test per stick */
+  .fixed{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+  }
+  
+  
+  .profile-card-sidebar:hover {
+    background-color: #181818;
+    border-radius: 10rem;
+  }
+  .side-nav-bar-ctn{
+    height: 90%;
+    width: 100%;
+  }
+  
+  
+  .name-usrn-ctn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .profile-card-options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .nav-sidebar > div >a {
+    text-decoration: none;
+    color: #E7E9EA;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    gap: 0.7rem;
+    width: fit-content;
+    padding: 0.4rem;
+  }
+  .nav-elem-ctn :hover {
+    border-radius: 30rem;
+    transition: background-color 0.3s ease;
+    background-color: rgba(255,255,255,0.5);
+  }
+  
+  
+  .nav-sidebar{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  
+  /* Main content */
+  .main-ctn{
+    border-left: 0.8px solid rgb(47, 51, 54);
+    border-right: 0.8px solid rgb(47, 51, 54);
+    min-height: 100%;
+  }
+  
+  .feed-mode-ctn {
+    border-bottom: 0.8px solid rgb(47, 51, 54);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    opacity: 1;
+    padding-left: 1rem;
+  }
+
+  
+  
+  
+  .post-interact-ctn{
+    display: flex;
+  }
+  
+  .post-btn{
+    background-color: #1D9BF0;
+    color: #E7E9EA;
+    font-weight: bolder;
+    border-radius: 7rem;
+    font-size: 0.8rem;
+    border: none;
+  }
+  
+  #post-new-tweet:disabled{
+    background-color: #0F4E78;
+    color: rgb(170, 152, 152);
+  }
+  
+  .post-btn:not([disabled]):hover{
+    background-color: rgb(9, 94, 151);
+  }
+  
+  #sidebar-post-btn{
+    width: 100%;
+    height: 3rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+  
+  #sidebar-post-btn:hover{
+    background-color: rgb(26, 140, 216);
+  }
+  
+  .sidebar-ctn {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 250px;
+    justify-content: space-between;
+  }
+  
+  .profile-pic {
+    width: 2.4rem;
+  }
+  
+  .feed-profile-ctn{
+    margin: 10px;
+  }
+  
+  .username-name{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .post-interaction-ctn{
+    margin-top: 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .bmk-share-ctn{
+    display: flex;
+    margin-right: 1rem;
+    gap: 1rem;
+  }
+  
+  .profile-card-nickname{
+    font-weight: 500;
+    font-size: small;
+  }
+  
+  .profile-card-username{
+    color: #666B6F;
+    font-size: small;
+  }
+  
+  .profile-card-left-side{
+    display: flex;
+  }
+  .prof-pic-ctn{
+    margin: 10px;
+  }
+  
+
+  
+  .post-btn-feed{
+    height: 2rem;
+    width: 4rem;
+    margin-right: 1rem;
+  }
+  
+  .post-interact-ctn{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .post-interact-ctn{
+    width: 90%;
+  }
+  
+  .interaction-ctn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1rem;
+  }
+  
+  .interaction-counter{
+    color: gray;
+  }
+  
+  .interact-cmt:hover{
+    color: #1D9BF0;
+    background-color: hsla(204, 88%, 53%, 0.5);
+    border-radius: 1rem;
+  }
+  
+  .interact-rtw:hover{
+    color: hsl(160, 100%, 36%);
+    background-color: hsla(160, 100%, 36%, 0.5);
+    border-radius: 1rem;
+  }
+  
+  .interact-like:hover{
+    color: hsl(332, 81%, 42%);
+    background-color: hsla(332, 81%, 42%, 0.5);
+    border-radius: 1rem;
+  }
+  
+
+
+
+  /* Profile details css */
+
+  .profile-details-flex-ctnm{
+    width: 650px;
+    position: relative;
+  }
+
+  .profile-pic-ctn{
+    position: absolute;
+    top: 120px;
+    left: 25px;
+  }
+
+  #profile-pg-pic{
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+  }
+
+  .cover-pic-ctn{
+    width: 650px;
+    height: 200px;
+  }
+
+
+  #cover-pic{
+    display: block;
+    width:648px;
+    max-height:200px;
+    object-fit: cover;
+}
+
+
+ .edit-profile-btn-ctn{
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.7rem;
+ }
+ 
+ .edit-profile-btn{
+  background-color: black;
+  outline: none;
+  border: 1px solid rgb(83, 100, 113);
+  /* border: 0.2px solid rgba(255,255,255,0.5); */
+  color: #E7E9EA;
+  border-radius: 9999px;
+  font-size: large;
+  padding: 0.44rem 1rem;
+  font-weight: bold;
+ }
+
+ .edit-profile-btn:hover{
+  background-color: rgb(83, 100, 113);
+ }
+
+  .name-username-ctn{
+    height: 51px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 1rem;
+  }
+  .prsn-details-flex-ctn{
+    margin-top: 1.4rem;
+  }
+
+.profile-description{
+padding-left: 1rem;
+margin: 10px 0px;
+}
+
+.birthdate-join-date-ctn{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  padding-left: 1rem;
+  margin-top: 10px;
+}
+
+.join-dt-ctn{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+.followers-following-ctn{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 1rem;
+  gap: 1rem;
+  margin: 1rem 0;  
+}
+
+
+.follow-number{
+  font-weight: bold;
+
+}
+
+.fllw-txt{
+  color: #666B6F;
+}
+
+.follow-ctn:hover{
+  text-decoration: underline;
+  text-underline-offset:7px;
+  cursor: pointer;
+}
+
+
+
+  .name-ctn{
+    font-size: large;
+    font-weight: bold;
+  }
+  .username{
+    font-size: medium;
+  }
+  
+  .feed-username-options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .feed-profile-ctn{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+  }
+  .username-feed{
+    font-size: 1.3rem;
+  }
+  
+  .feed-post-content{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  
+  .feed-post{
+    display: flex;
+    width: 100%;
+    border-bottom: 0.8px solid rgb(47, 51, 54);
+    border-top: 0.8px solid rgb(47, 51, 54);
+    gap: 1rem;
+  }
+  
+  .feed-username-options{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+  }
+  
+  .feed-ctn{
+    width: 100%;
+  }
+  
+  
+  .picture-post{
+    display: block;
+    max-width:77%;
+    width: auto;
+    height: auto;
+    border: 0.8px solid rgb(47, 51, 54);
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+  
+  
+  .search-bar{
+    display: flex;
+    background-color: #202327;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  #search{
+    background-color: #16181C;
+    outline: none;
+    border: none;
+  }
+  
+  #search:focus{
+    color: #E7E9EA;
+  }
+  
+  /* Right side bar */
+  
+  .right-side-bar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  
+  .main-side-ctn{
+    max-width: 600px;
+    min-height: 100%;
+    min-width: 650px;
+  }
+  
+  .right-side-ctn{
+    max-width: 350px;
+    min-width: 260px;
+    margin-left: 1.4rem;
+    margin-top: 10px;
+  }
+  
+  .right-side-bar > div {
+    background-color:#16181C ;
+    border-radius: 1rem;
+    width: 100%;
+    padding: 0.36rem 1rem;
+  }
+  
+  .sub-btn{
+    padding: 0.4rem 1rem;
+    font-size: large;
+  }
+  
+  .sub-header{
+    font-weight: 900;
+  }
+  
+  #trends-ctn{
+    padding: 0;
+  }
+  
+  .trending-row{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .trends-main-title{
+    padding-left: 1rem;
+  }
+  
+  .trending-row:hover{
+    background-color: #1D1F23;
+  }
+  
+  .trnd-title{
+    margin: 0;
+    padding: 0;
+  }
+  
+  .trnd-ctg{
+    display: flex;
+    justify-content: space-between;
+    color: #474A4F;
+  }
+  
+  .trnd-title-ctn{
+    justify-self: center;
+    padding-bottom: 0.5rem;  
+  }
+  .trnd-stat-posts{
+    color: #474A4F;
+    display: flex;
+  }
+  
+  .trendings-ctn{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
+  }
+  
+  #follow-sug-ctn{
+    padding:0;
+  }
+  
+  .fllw-sg-ctn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .user-img-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    padding-left: 1rem;
+  }
+  
+  .usr-name-ctn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .all-fll-sg-ctn{
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.6rem;
+  }
+  
+  #follow-sug-text{
+    padding-left: 1rem;
+  }
+  
+  .fllw-sg-ctn:hover{
+    background-color: #1D1F23;
+  }
+  
+  .fllw-sg-ctn{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  #footer-id{
+    background-color: black ;
+    color: #515863;
+  }
+  
+  
+  
+  @media only screen and (max-width: 1200px) {
+    .nav-text {
+      display: none;
+    }
+    .nav-sidebar{
+      position: relative;
+    }
+  
+    .profile-card-left-side{
+      position: relative;
+    }
+  
+  
+    .name-usrn-ctn, .profile-card-options{
+      display: none;
+      background-color: none;
+    }
+  
+    .fixed{
+      left: 70px;
+    }
+  
+    .profile-card-sidebar{
+      display: flex;
+      width: 44px;
+      justify-content: space-between;
+      padding: 0.7rem;
+      padding-right: 0.6rem;
+      margin-bottom: 1rem;
+      position: fixed;
+      bottom: 0px;
+      background-color: black;
+    }
+  }
+  
+  @media screen and (max-width: 1089px) {
+    .right-side-ctn {
+      display: none;
+    }
+  
+    .fixed{
+      left: 100px;
+    }
+  
+   .sidebar-ctn{
+    width: 110px;
+   }
+  }
+  
+  @media screen and (max-width: 849px) {
+  
+    body{
+      width: calc(100vw - 100px);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+  
+  
+    .sidebar-ctn{
+      display: none;
+    }
+  
+  }
+  
+  @media screen and (max-width: 650px) {
+  
+  
+  
+  
+    .sidebar-ctn{
+      display: none;
+    }
+  
+  }
+  
+  @media screen and (max-width: 435px) {
+  
+    body,.main-side-ctn,.main-ctn{
+      width: 400px;
+      margin: 0 auto;
+      min-width: 0px;
+      border: none;
+    }
+  
+  
+  
+    body{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .sidebar-ctn{
+      display: none;
+    }
+  
+    .username-name{
+      margin-bottom: 4px;
+    }
+  
+    .picture-post-ctn{
+      margin-top: 4px;
+    }
+  
+    .feed-mode-ctn{
+      position: sticky;
+      top:0px;
+      background-color: rgba(0,0,0,.7);
+  
+    }
+  
+  }
