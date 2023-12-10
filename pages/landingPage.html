@@ -52,10 +52,12 @@
           <!--CREATE ACCOUNT MODAL-->
           <div id="SignUpModal" class="modal">
             <!-- <div class="bottom-modal"> -->
-            <div class="modal-content">
+            <div class="modal-content" style="filter: blur(0.1px)">
               <div class="modal-header">
                 <span></span>
-                <div class="x-button" onclick="closeSignUpModal()">&times;</div>
+                <div class="x-button" onclick="closeSignUpModal()">
+                  <img src="../images/closeButton.svg" alt="close" />
+                </div>
                 <div id="stepsCount" class="steps">Step 1 of 5</div>
               </div>
               <div class="modal-field-container">
@@ -325,29 +327,33 @@
                       </div>
                     </div>
                   </form>
-                </div>
-                <div id="nextButtonDiv">
-                  <button
-                    id="nextButton"
-                    class="nextButtonDisabled"
-                    onclick="handleClick()"
-                  >
-                    Next
-                  </button>
+                  <div id="Step1NextButtonDiv">
+                    <button
+                      id="nextButton"
+                      class="nextButtonDisabled"
+                      onclick="handleClick()"
+                    >
+                      Next
+                    </button>
+                  </div>
                 </div>
               </div>
               <!-- </div> -->
-              <div id="step2" class="modal-content">
-                <div class="modal-header">
-                  <div style="color: white; display: flex; width: 100%">
-                    <h1 style="width: 100%; text-align: center">
-                      Customize your experience
-                    </h1>
-                  </div>
-                </div>
-                <div class="modal-field-container">
+              <div id="step2" class="modal-content" style="height: 600px">
+                <div
+                  class="modal-field-container"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                  "
+                >
                   <div class="modal-field-content">
-                    <div class="h2-modal"></div>
+                    <div class="h2-modal">
+                      <h1 style="width: 100%; text-align: center; color: white">
+                        Customize your experience
+                      </h1>
+                    </div>
                     <div
                       style="
                         display: flex;
@@ -375,7 +381,18 @@
                         name, email, or phone number.</span
                       >
                       <div>
-                        <div class="checkboxS2"></div>
+                        <div
+                          id="checkboxSignUp"
+                          class="checkboxS2 checkboxS2Active"
+                          onclick="handleAgreeForTerms()"
+                        >
+                          <img
+                            id="toggleImage"
+                            src="../images/checkCheckbox.svg"
+                            alt="checked"
+                            width="16px"
+                          />
+                        </div>
                       </div>
                     </div>
                     <div>
@@ -387,18 +404,382 @@
                         more</span
                       >
                     </div>
+                    <div id="Step2NextButtonDiv">
+                      <button
+                        id="nextButton2"
+                        class="nextButtonDisabled"
+                        onclick="handleClick()"
+                      >
+                        Next
+                      </button>
+                    </div>
                   </div>
                 </div>
-                <div id="test">
-                  <button id="test" class="test" onclick="handleClick()">
-                    Next
-                  </button>
+              </div>
+              <div id="step3" class="modal-content" style="height: 600px">
+                <div
+                  class="modal-field-container"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                  "
+                >
+                  <div class="modal-field-content">
+                    <div class="h2-modal">
+                      <span>Create your account</span>
+                    </div>
+                    <form>
+                      <div id="confirmedNameInputBox" class="inputBox">
+                        <div id="confirmedNameRegex" class="NameRegex"></div>
+                        <input
+                          type="text"
+                          id="confirmedUsername"
+                          name="confirmedUserName"
+                          required="required"
+                          maxlength="50"
+                        />
+                        <span>Name</span>
+                        <!-- <div id="name-regex-error"></div> -->
+                        <img
+                          src="../images/confirmedInputsCheck.svg"
+                          alt="checked"
+                          width="18px"
+                          style="padding-right: 6px; padding-top: 13px"
+                        />
+                      </div>
+                    </form>
+                    <form>
+                      <div
+                        class="inputBox confirmedEmailInputBox"
+                        id="confirmedEmailInputBox"
+                      >
+                        <input
+                          type="confirmedEmail"
+                          id="confirmedEmail"
+                          name="confirmedEmail"
+                          required="required"
+                        />
+                        <span>Email</span>
+                        <!-- <div id="email-regex-error"></div> -->
+                        <img
+                          src="../images/confirmedInputsCheck.svg"
+                          alt="checked"
+                          width="18px"
+                          style="padding-right: 6px; padding-top: 13px"
+                        />
+                      </div>
+                    </form>
+                    <form style="display: flex">
+                      <div id="confirmedBirthdateInputBox" class="inputBox">
+                        <!-- <div id="birthdate" class="NameRegex"></div> -->
+                        <input
+                          type="text"
+                          id="confirmedBirthdate"
+                          name="confirmedBirthdate"
+                          required="required"
+                        />
+                        <span>Date of birth</span>
+                        <!-- <div id="name-regex-error"></div> -->
+                        <img
+                          src="../images/confirmedInputsCheck.svg"
+                          alt="checked"
+                          width="18px"
+                          style="padding-right: 6px; padding-top: 13px"
+                        />
+                      </div>
+                    </form>
+                    <div class="step3SpanButton">
+                      <p class="step3AgreeTerms">
+                        By signing up, you agree to the
+                        <em>Terms of Service</em> and <em>Privacy Policy</em>,
+                        including <em>Cookie Use</em>. X may use your contact
+                        information, including your email address and phone
+                        number for purposes outlined in our Privacy Policy, like
+                        keeping your account secure and personalizing our
+                        services, including ads.<em> Learn more</em>. Others
+                        will be able to find you by email or phone number, when
+                        provided, unless you choose otherwise <em>here</em>.
+                      </p>
+                      <div>
+                        <button
+                          id="nextStepToSignUpDiv"
+                          class="nextStepToSignUp"
+                          onclick="handleClick()"
+                        >
+                          Sign Up
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div
+                id="step-3-authenticate"
+                class="modal-content"
+                style="height: 600px"
+              >
+                <div
+                  class="modal-field-container"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    background-color: white;
+                    border-radius: 30px;
+                  "
+                >
+                  <div
+                    class="modal-field-content"
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      border-radius: 30px;
+                    "
+                  >
+                    <div>
+                      <h1 style="color: black">reCAPTCHA authentication</h1>
+                       <form action="?" method="POST">
+                        <div
+                          class="g-recaptcha"
+                          data-sitekey="your_site_key"
+                        ></div>
+                        <br />
+                        <input type="submit" value="Submit" />
+                      </form>
+                      <div id="nextStepToSignUpDiv">
+                        <button
+                          id="nextButton4"
+                          class="nextButtonEnabled"
+                          onclick="handleClick()"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <div id="step4" class="modal-content" style="height: 600px">
+                <div class="modal-field-container">
+                  <div
+                    class="modal-field-content"
+                    style="
+                      display: flex;
+                      align-items: center;
+                      border-radius: 30px;
+                    "
+                  >
+                    <div>
+                      <h1 style="margin-bottom: 0">We sent you a code</h1>
+                      <div class="emailForVerification">
+                        <p>Enter it below to verify:</p>
+                        <p class="emailParagraphStep4"></p>
+                      </div>
+                      <div class="verificationCodeInput">
+                        <form>
+                          <div
+                            id="verificationCodeInput"
+                            class="inputBox"
+                            style="margin-bottom: 7px; margin-top: 7px"
+                          >
+                            <div
+                              id="verificationCode"
+                              class="verificationCode"
+                            ></div>
+                            <input
+                              class="verificationCodeInput"
+                              type="number"
+                              id="verificationCode"
+                              name="verificationCode"
+                              required="required"
+                              maxlength="6"
+                              value="111111"
+                            />
+                            <span>Verification code</span>
+                            <!-- <div id="name-regex-error"></div> -->
+                          </div>
+                        </form>
+                        <div>
+                          <span
+                            style="
+                              color: #1d9bf0;
+                              font-size: 13px;
+                              cursor: pointer;
+                            "
+                            >Didn't receive an email?</span
+                          >
+                        </div>
+                      </div>
+                      <div id="nextStepToSignUpDiv">
+                        <button
+                          id="nextButton4"
+                          class="nextButtonEnabled"
+                          onclick="handleClick()"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="step5" class="modal-content" style="height: 600px">
+                <div class="modal-field-container">
+                  <div
+                    class="modal-field-content"
+                    style="
+                      display: flex;
+                      align-items: center;
+                      border-radius: 30px;
+                    "
+                  >
+                    <div>
+                      <h1 style="margin-bottom: 0">You'll need a password</h1>
+                      <div class="emailForVerification">
+                        <p>Make sure it's 8 characters or more.</p>
+                      </div>
+                      <div class="verificationCodeInput">
+                        <form>
+                          <div
+                            id="passwordInputBox"
+                            class="inputBox"
+                            style="margin-bottom: 7px; margin-top: 7px"
+                          >
+                            <div id="passwordInput" class="passwodInput"></div>
+                            <input
+                              class="password"
+                              type="password"
+                              id="password"
+                              name="password"
+                              required="required"
+                              maxlength="50"
+                            />
+                            <span>Password</span>
+                            <img
+                              src="../images/displayPassword.svg"
+                              alt="display"
+                              width="22px"
+                              style="padding-right: 10px; padding-top: 25px"
+                              id="displayPassword"
+                              onclick="togglePasswordVisibility()"
+                            />
+                          </div>
+                          <p
+                            id="passwordError"
+                            style="
+                              color: #bd1919;
+                              font-size: 13px;
+                              margin-top: 2px;
+                              font-weight: 700;
+                            "
+                          ></p>
+                        </form>
+                      </div>
+                      <div id="nextStepToSignUpDiv">
+                        <button
+                          id="submitPassword"
+                          class="nextButtonEnabled"
+                          onclick="submitPassword()"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <!-- </div> -->
           </div>
-          <!-- <div id="step2" class="modal-step-2">This is a test</div> -->
+
+          <div id="SignInModal" class="modal">
+            <div class="modal-content" style="filter: blur(0.1px)">
+              <div class="modal-header">
+                <span></span>
+                <div class="x-button" onclick="closeSignUpModal()">
+                  <img src="../images/closeButton.svg" alt="close" />
+                </div>
+                <div id="dXsLogo-signin" class="dXsLogoSignin">
+                  <img src="../images/dXsLogo.svg" alt="logo" />
+                </div>
+              </div>
+              <div class="signIn-ctn">
+                <div class="modal-field-container-signin">
+                  <h1 class="SignIn-h1">Sign in to dXs</h1>
+
+                  <div
+                    id="SignUpModalGoogle"
+                    class="SignUp Google button"
+                    style="margin-bottom: 25px"
+                  >
+                    <div>
+                      <img
+                        src="../images/icons8-google.svg"
+                        alt="google icon"
+                        height="26"
+                      />
+                    </div>
+                    <p>Sign In With Google</p>
+                  </div>
+                  <div class="SignUp Apple button">
+                    <div>
+                      <img src="../images/apple-icon.svg" alt="apple-icon" />
+                    </div>
+                    <p>Sign Up With Apple</p>
+                  </div>
+                  <div class="or">
+                    <div class="border-line"></div>
+                    <p style="color: white">or</p>
+                    <div class="border-line"></div>
+                  </div>
+                  <form>
+                    <div
+                      id="signin-name-input"
+                      class="inputBox"
+                      style="margin-top: 0; margin-bottom: 22px"
+                    >
+                      <div id="nameRegex" class="NameRegex"></div>
+                      <input
+                        type="text"
+                        id="signIn-username"
+                        name="signIn-userName"
+                        required="required"
+                        maxlength="50"
+                      />
+                      <span>Email or username</span>
+                      <!-- <div id="name-regex-error"></div> -->
+                    </div>
+                  </form>
+                  <div id="signInNextButton">
+                    <button id="signInnextButton" class="signInBtn">
+                      Next
+                    </button>
+                  </div>
+                  <div id="forgotPassword">
+                    <button id="forgotPassword" class="forgotPasswordBtn">
+                      ForgotPassword?
+                    </button>
+                  </div>
+                  <div style="margin-top: 50px">
+                    <p style="color: rgb(113, 118, 123)">
+                      Don't have an account?
+                      <em
+                        style="
+                          color: #1d9bf0;
+                          cursor: pointer;
+                          font-style: normal;
+                        "
+                        >Sign up</em
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer of landing page********************************** -->
 
           <div class="TermsPolicies">
             <p>
@@ -408,7 +789,9 @@
             </p>
           </div>
           <div class="SignIn">Already have an account?</div>
-          <div class="SignUp SignIn-Button button">Sign in</div>
+          <div class="SignUp SignIn-Button button" onclick="openSignInModal()">
+            Sign in
+          </div>
         </div>
       </div>
     </container>
@@ -451,4 +834,5 @@
     <!--CREATE ACCOUNT MODAL-->
   </body>
   <script src="./landingPage.js"></script>
+  <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 </html>

@@ -221,7 +221,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(36, 45, 52, 0.5);
+  background-color: rgba(91, 112, 131, 0.5);
   z-index: 1;
 }
 
@@ -332,6 +332,11 @@ form {
   box-sizing: border-box;
   display: flex;
   margin: 24px 0;
+  margin-bottom: 50px;
+}
+
+#step3 .inputBox {
+  margin: 17px 0;
 }
 
 .inputBox:focus {
@@ -666,7 +671,7 @@ body select {
   cursor: pointer;
 }
 
-#nextButtonDiv {
+#Step1NextButtonDiv {
   display: flex;
   color: black;
   font-size: 17px;
@@ -679,6 +684,42 @@ body select {
   bottom: 5%;
   border-radius: 30px;
   cursor: default;
+}
+
+#Step2NextButtonDiv {
+  display: flex;
+  color: black;
+  font-size: 17px;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  height: 52px;
+  width: 440px;
+  position: absolute;
+  bottom: 5%;
+  border-radius: 30px;
+  cursor: default;
+}
+
+#nextStepToSignUpDiv {
+  display: flex;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  height: 52px;
+  width: 440px;
+  border-radius: 30px;
+  cursor: default;
+  margin-top: 28px;
+  background-color: #1d9bf0;
+}
+
+#nextStepToSignUpDiv:hover {
+  cursor: pointer;
+  background-color: #1a8cd8;
+  transition: all 0.2s;
 }
 
 .nextButtonDisabled {
@@ -721,6 +762,7 @@ input:-webkit-autofill:active {
 
 .nextButtonEnabled:hover {
   background-color: rgba(215, 219, 220);
+  transition: all 0.2s;
 }
 
 #nextButton:disabled {
@@ -748,14 +790,148 @@ input:-webkit-autofill:active {
   display: none;
 }
 
+#step3 {
+  display: none;
+}
+
+#step-3-authenticate {
+  display: none;
+}
+
+#step4 {
+  display: none;
+}
+
+#step5 {
+  display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#step3 .step3AgreeTerms {
+  font-size: 13px;
+  color: #71767b;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.step3SpanButton {
+  margin-top: 60px;
+}
+
 .checkboxS2 {
+  display: flex;
   height: 20px;
   width: 20px;
   background-color: transparent;
   border-radius: 4px;
   box-sizing: border-box;
   border: rgb(113, 118, 123) 2px solid;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
 }
+
+.checkboxS2Active {
+  background-color: #1d9bf0;
+}
+
+.step3AgreeTerms em {
+  font-style: normal;
+  color: #1d9bf0;
+}
+
+.step3AgreeTerms em:hover {
+  border-bottom: #1a8cd8 0.1px solid;
+  cursor: pointer;
+}
+
+.emailForVerification {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.emailParagraphStep4 {
+  font-weight: 700;
+}
+
+#displayPassword {
+  cursor: pointer;
+}
+
+.signInBtn {
+  display: flex;
+  color: black;
+  font-size: 15px;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border-color: transparent;
+  border-radius: 30px;
+  cursor: pointer;
+  height: 34px;
+  margin-bottom: 22px;
+}
+
+.forgotPasswordBtn {
+  display: flex;
+  color: rgb(239, 243, 244);
+  font-size: 15px;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  border-color: rgb(83, 100, 113);
+  border-radius: 30px;
+  cursor: pointer;
+  height: 36px;
+}
+
+/*   -------- SIGN IN MODAL ---------- */
+.dXsLogoSignin {
+  width: 100%;
+  height: 1.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+.dXsLogoSignin img {
+  width: auto;
+  height: 50px;
+  position: relative;
+  left: -15px;
+}
+
+.SignIn-h1 {
+  color: white;
+  font-size: 31px;
+  margin-bottom: 25px;
+}
+
+.modal-field-container-signin {
+  width: 300px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.signIn-ctn {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
 /* MOBILE QUERY */
 
 @media screen and (max-width: 1298px) {
