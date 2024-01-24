@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-
+include_once "./helpers/DbConnection.php";
 class TweetRepository {
     private $dbConnection;
 
@@ -19,4 +19,6 @@ class TweetRepository {
         return $tweets;
     }
 
+
+    
 }
