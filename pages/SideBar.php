@@ -1,10 +1,8 @@
 <?php
 declare(strict_types=1);
-include_once("helpers/AccountRepository.php");
+include_once("../helpers/AccountRepository.php");
 
 $activeSessionUser = 1;
-$tweetRep = new TweetRepository();
-$tweets = $tweetRep->getAllTweetsByUserId(3);
 $acRepo = new AccountRepository();
 
 $activeUserId = 4;

@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-include_once "./helpers/DbConnection.php";
+include_once "DbConnection.php";
 class AccountRepository {
     private $dbConnection;
 
@@ -22,6 +22,7 @@ class AccountRepository {
             $userDetailArray = self::getAccountById($userId);
             return $userDetailArray[0][$field];
         }
+
 
         
      public function getAccountsUserFollows(int $userId): array {

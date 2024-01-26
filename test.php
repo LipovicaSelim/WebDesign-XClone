@@ -1,15 +1,26 @@
-<?php
+ <?php
 declare(strict_types=1);
-include "./helpers/DbConnection.php";
-include_once "./helpers/TweetRepository.php";
-
+include_once("../helpers/AccountRepository.php");
+include_once("../helpers/TweetRepository.php");
+// var_dump(__DIR__);
+$activeSessionUser = 1;
 $tweetRep = new TweetRepository();
-$tweets = $tweetRep->getAllTweetsByUserId(3);
+$tweets = $tweetRep->getAllTweetsByUserId(1);
+$accountRepo = new AccountRepository();
+$accountUserFollowsTemp = $accountRepo->getAccountsUserFollows($activeSessionUser);
+$accountUserFollows = $accountUserFollowsTemp[2];
+$feedTweets = [];
+// foreach ($accountUserFollows as $followedAccount) {
+//     var_dump($accountUserFollows);
+//     // $tweetsOfFollowedAccount = $tweetRep->getAllTweetsByUserId($followedAccount);
+//     var_dump($followedAccount);
+// }
 
-    // var_dump($tweets);
-$tw1 = $tweetRep->getAllTweetsByUserFollows(1);
-foreach($tw1 as $tweetRep){
-    var_dump($tweetRep["ndjek_id"]);
-}
+var_dump($accountUserFollows);
 
- 
+
+$feedTweets = [];
+
+foreach ($tweets as $tweet) {
+    
+ }
