@@ -932,6 +932,11 @@ input::-webkit-inner-spin-button {
   margin-top: 15px;
 }
 
+/* #passwordErrorMessage {
+  transition: all;
+  transition-duration: 0.5s;
+} */
+
 /* MOBILE QUERY */
 
 @media screen and (max-width: 1298px) {
