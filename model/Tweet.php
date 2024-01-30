@@ -1,33 +1,35 @@
 <?php
 declare(strict_types=1);
+include "../helpers/TweetRepository.php";
 class Tweet{
-    private int $id;
-    private string $userId;
+    private int $userId;
 
-    private DateTime $createdAt;
+    private string $createdAt;
 
     private String $content;
 
-    public function __construct(int $id, string $userId, DateTime $createdAt, String $content) {
-        $this->id = $id;
+    public function __construct(int $userId, string $createdAt, String $content) {
         $this->userId = $userId;
         $this->createdAt = $createdAt;
         $this->content = $content;
     }
 
-    public function getId(): int{
-        return $this->id;
-    }
 
-    public function getUserId(): string{ 
+    public function getUserId(): int{ 
         return $this->userId;
     }
 
-    public function getCreatedAt(): DateTime{ 
+    public function getCreatedAt(): string{ 
         return $this->createdAt;
     }
 
     public function getContent(): string{ 
         return $this->content;
     }
+
+    public  function toEntity() {
+        $twR = new TweetRepository();
+        $twR->insertTweet($this->userId,$this->createdAt,$this->content);
+    }
+
 }

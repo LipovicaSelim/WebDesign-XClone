@@ -37,4 +37,35 @@ class AccountRepository {
         $tweets = $statement->fetchAll();
         return $tweets;
     }
+
+    private function getProfileMedia(int $userId): array {
+        $connection = $this->dbConnection;
+        $query = "select profile_img_url from media where media_id = $userId;";
+        $statement = $connection->query($query);
+        $imgUrlArray = $statement->fetch();
+        return $imgUrlArray;
+    }
+
+       public function getProfilePicture(int $userId): string {
+        $connection = $this->dbConnection;
+        $query = "select profile_img_url from media where media_id = $userId;";
+        $statement = $connection->query($query);
+        $imgUrlArray = $statement->fetch();
+        $url = $imgUrlArray[0];
+        if(isset($url)){
+            return $url;
+        } else {
+            return "images/defaultProfile1.svg";
+        }
+    }
+
+           public function getProfileBanner(int $userId): string {
+        $connection = $this->dbConnection;
+        $query = "select profile_img_url from media where media_id = $userId;";
+        $statement = $connection->query($query);
+        $imgUrlArray = $statement->fetch();
+        return $imgUrlArray[1];
+    }
+
+
 }
