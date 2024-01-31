@@ -5,7 +5,6 @@ include '../helpers/DbConnection.php';
 $dbConnection = new DbConnection();
 $pdo = $dbConnection->dbConnect();
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emri = $_POST['emri'];
     $email = $_POST['email'];
@@ -18,8 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hashedPassword = password_hash($fjalekalimi, PASSWORD_DEFAULT);
 
+    // Check if the email domain is "@xclone.com"
+    $isXcloneEmail = strpos($email, '@xclone.com') !== false;
 
-    /*----- Check if email that the user has written in input, already exists in DB. No account can be registered by same email! ---*/
+    /*----- Check if email that the user has written in input, already exists in DB. No account can be registered by the same email! ---*/
     $sql_check_email = "SELECT COUNT(*) AS count FROM perdoruesit WHERE email = ?";
     $stmt_check_email = $pdo->prepare($sql_check_email);
     $stmt_check_email->execute([$email]);
@@ -27,23 +28,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result['count'] > 0) {
         $response = ['status' => 'error', 'message' => 'An account with this email already exists.'];
-        echo json_encode($response);
     } else {
-
-
-
-
-        $sql = "INSERT INTO perdoruesit (emri, email, fjalekalimi, datelindja, krijuar_me) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO perdoruesit (emri, email, fjalekalimi, datelindja, krijuar_me, eshte_admin) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$emri, $email, $hashedPassword, $datelindja, $krijuar_me]);
+
+        $eshteAdmin = $isXcloneEmail ? true : false;
+
+        $stmt->execute([$emri, $email, $hashedPassword, $datelindja, $krijuar_me, $eshteAdmin]);
+
         if ($stmt->rowCount() > 0) {
             $response = ['status' => 'success', 'message' => 'User registered in db successfully'];
+            header('Location: ../pages/homeView.php');
+            exit();
         } else {
             $response = ['status' => 'error', 'message' => 'Failure in registering a new user'];
         }
-
-        echo json_encode($response);
     }
+
+    echo json_encode($response);
 } else {
     $response = ['status' => 'error', 'message' => 'Form submission not allowed!'];
     echo json_encode($response);

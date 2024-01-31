@@ -1,6 +1,6 @@
-<?php
-require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
-?>
+<!-- <?php
+      require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php';
+      ?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,10 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
     </div>
     <div class="RightPannel">
       <div class="RightContent">
-        <h1 class="happening">Happening now</h1>
+        <img src="images/dXsLogo.svg" id="logo-small-screens" alt="x-logo2" fill="white" style="display: none" />
+        <div>
+          <h1 class="happening">Happening now</h1>
+        </div>
         <p class="joinToday">Join today.</p>
         <div id="SignUpModalGoogle" class="SignUp Google button">
           <div>
@@ -71,7 +74,6 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
                     <span>Name</span>
                     <div id="name-regex-error"></div>
                   </div>
-
 
                   <div class="inputBox emailInputBox" id="NameInputBox">
                     <input type="email" id="email" name="email" required="required" oninput="delayedEmailValidation(this.value)" />
@@ -285,10 +287,10 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
               <!-- </div> -->
               <div id="step2" class="modal-content" style="height: 600px">
                 <div class="modal-field-container" style="
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                  ">
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                    ">
                   <div class="modal-field-content">
                     <div class="h2-modal">
                       <h1 style="width: 100%; text-align: center; color: white">
@@ -296,22 +298,22 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
                       </h1>
                     </div>
                     <div style="
-                        display: flex;
-                        align-self: start;
-                        font-size: 20px;
-                        color: #e7e9ef;
-                        font-weight: 700;
-                        margin-bottom: 15px;
-                      ">
+                          display: flex;
+                          align-self: start;
+                          font-size: 20px;
+                          color: #e7e9ef;
+                          font-weight: 700;
+                          margin-bottom: 15px;
+                        ">
                       <span>Track where you see X content across the web</span>
                     </div>
                     <div style="
-                        display: flex;
-                        align-items: start;
-                        font-size: 15px;
-                        font-weight: 400;
-                        margin-bottom: 20px;
-                      ">
+                          display: flex;
+                          align-items: start;
+                          font-size: 15px;
+                          font-weight: 400;
+                          margin-bottom: 20px;
+                        ">
                       <span>X uses this data to personalize your experience. This
                         web browsing history will never be stored with your
                         name, email, or phone number.</span>
@@ -322,11 +324,11 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
                       </div>
                     </div>
                     <div>
-                      <span>By signing up, you agree to our Terms, Privacy Policy,
-                        and Cookie Use. X may use your contact information,
-                        including your email address and phone number for
-                        purposes outlined in our Privacy Policy. Learn
-                        more</span>
+                      <span>By signing up, you agree to our Terms, Privacy
+                        Policy, and Cookie Use. X may use your contact
+                        information, including your email address and phone
+                        number for purposes outlined in our Privacy Policy.
+                        Learn more</span>
                     </div>
                     <div id="Step2NextButtonDiv">
                       <button id="nextButton2" class="nextButtonDisabled" onclick="handleClick()">
@@ -338,10 +340,10 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
               </div>
               <div id="step3" class="modal-content" style="height: 600px">
                 <div class="modal-field-container" style="
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                  ">
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                    ">
                   <div class="modal-field-content">
                     <div class="h2-modal">
                       <span>Create your account</span>
@@ -372,11 +374,12 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
                         <em>Terms of Service</em> and <em>Privacy Policy</em>,
                         including <em>Cookie Use</em>. X may use your contact
                         information, including your email address and phone
-                        number for purposes outlined in our Privacy Policy, like
-                        keeping your account secure and personalizing our
+                        number for purposes outlined in our Privacy Policy,
+                        like keeping your account secure and personalizing our
                         services, including ads.<em> Learn more</em>. Others
-                        will be able to find you by email or phone number, when
-                        provided, unless you choose otherwise <em>here</em>.
+                        will be able to find you by email or phone number,
+                        when provided, unless you choose otherwise
+                        <em>here</em>.
                       </p>
                       <div>
                         <button id="sendVerificationCode" class="nextStepToSignUp" onclick="handleClick()">
@@ -437,10 +440,10 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
               <div id="step4" class="modal-content" style="height: 600px">
                 <div class="modal-field-container">
                   <div class="modal-field-content" style="
-                      display: flex;
-                      align-items: center;
-                      border-radius: 30px;
-                    ">
+                        display: flex;
+                        align-items: center;
+                        border-radius: 30px;
+                      ">
                     <div>
                       <h1 style="margin-bottom: 0">We sent you a code</h1>
                       <div class="emailForVerification">
@@ -449,23 +452,39 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
                       </div>
                       <div class="verificationCodeInput">
                         <div id="verificationCodeInput" class="inputBox" style="margin-bottom: 7px; margin-top: 7px">
-                          <div id="verificationCode" class="verificationCode"></div>
-                          <input class="verificationCodeInput" type="number" id="verificationCode" name="verificationCode" required="required" maxlength="6" />
+                          <div id="verificationCodeDisplay" class="verificationCode"></div>
+                          <input type="number" id="verificationCode" name="verificationCode" required="required" maxlength="6" />
                           <span>Verification code</span>
                         </div>
                         <div>
                           <span style="
-                              color: #1d9bf0;
-                              font-size: 13px;
-                              cursor: pointer;
-                            ">Didn't receive an email?</span>
+                                color: #1d9bf0;
+                                font-size: 13px;
+                                cursor: pointer;
+                              ">Didn't receive an email?</span>
                         </div>
                       </div>
                       <div id="nextStepToSignUpDiv">
-                        <button id="nextButton4" class="nextButtonEnabled" onclick="handleClick()">
+                        <button id="nextButton4" class="nextButtonEnabled">
                           Submit
                         </button>
                       </div>
+                      <div id="validationErrorMessage" style="
+                            position: absolute;
+                            bottom: -100px;
+                            left: calc(50% - 110px);
+                            height: 50px;
+                            width: 220px;
+                            background-color: #1d9bf0;
+                            border-radius: 5px;
+                            color: white;
+                            font-size: 18px;
+                            display: none;
+                            justify-content: center;
+                            align-items: center;
+                            font-weight: 600;
+                            transition: all 5s ease-out;
+                          "></div>
                     </div>
                   </div>
                 </div>
@@ -473,10 +492,10 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
               <div id="step5" class="modal-content" style="height: 600px">
                 <div class="modal-field-container">
                   <div class="modal-field-content" style="
-                      display: flex;
-                      align-items: center;
-                      border-radius: 30px;
-                    ">
+                        display: flex;
+                        align-items: center;
+                        border-radius: 30px;
+                      ">
                     <div>
                       <h1 style="margin-bottom: 0">You'll need a password</h1>
                       <div class="emailForVerification">
@@ -548,9 +567,10 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
                     <span>Email or username</span>
                     <!-- <div id="name-regex-error"></div> -->
                   </div>
-                  <div id="signin-password" class="inputBox" style="margin-top: 2px; margin-bottom: 12px;">
-                    <input type="password" id="signin-password" name="password" required="required" maxlength="60" placeholder="Password">
+                  <div id="signin-password" class="inputBox" style="margin-top: 2px; margin-bottom: 12px">
+                    <input type="password" id="signin-password-input" name="password" required="required" maxlength="60" placeholder="Password" />
                     <span></span>
+                    <img src="images/displayPassword.svg" alt="display" width="22px" style="padding-right: 10px; padding-top: 25px" id="displayPassword" onclick="toggleSignInPasswordVisibility()" />
                   </div>
                   <div id="signInNextButton">
                     <button id="signInnextButton" class="signInBtn">
@@ -565,23 +585,34 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
                   <div style="margin-top: 50px">
                     <p style="color: rgb(113, 118, 123)">
                       Don't have an account?
-                      <em style="
-                          color: #1d9bf0;
-                          cursor: pointer;
-                          font-style: normal;
-                        ">Sign up</em>
+                      <em id="toggleSignInWithSignUp" style="
+                            color: #1d9bf0;
+                            cursor: pointer;
+                            font-style: normal;
+                          ">Sign up</em>
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div id="passwordErrorMessage" style="position:absolute; bottom: -100px; left:calc(50% - 110px); height: 50px; 
-        width:220px; background-color: #1d9bf0; border-radius: 5px;  color:white; font-size: 18px; display:none;justify-content: center;
-  align-items: center;font-weight:600; transition:all 1s ease-out; transition-delay: 0.7s;
-        "></div>
+            <div id=" passwordErrorMessage" style="
+                  position: absolute;
+                  bottom: -100px;
+                  left: calc(50% - 110px);
+                  height: 50px;
+                  width: 220px;
+                  background-color: #1d9bf0;
+                  border-radius: 5px;
+                  color: white;
+                  font-size: 18px;
+                  display: none;
+                  justify-content: center;
+                  align-items: center;
+                  font-weight: 600;
+                  transition: all 5s ease-out;
+                "></div>
           </div>
         </form>
-
 
         <!-- Footer of landing page********************************** -->
 
@@ -663,13 +694,11 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php'
 
   <!--CREATE ACCOUNT MODAL-->
 </body>
-<script src="./landingPage.js">
-
-</script>
-<script type="text/javascript" src="login.js"></script>
+<script src="./landingPage.js"></script>
+<script type="text/javascript" src="./login.js"></script>
 <script type="text/javascript" src="../helpers/sendVerificationCode.js"></script>
+<script type="text/javascript" src="../helpers/compareVerificationCode.js"></script>
 
 <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
-
 
 </html>
