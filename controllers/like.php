@@ -1,23 +1,82 @@
 <?php
 
 declare(strict_types=1);
-
 include_once("../helpers/DbConnection.php");
+include_once("../helpers/TweetRepository.php");
+session_start();
+
+function getLikesForTweet($tweet_id)
+{
+    $tweetRep = new TweetRepository();
+    return $tweetRep->getLikesForTweet($tweet_id);
+}
+
 
 $tempDb = new DbConnection();
 $dbConnection = $tempDb->dbConnect();
+$perdoruesi_id = $_SESSION["user_id"];
 
-if(isset($_POST["like"])){
-    $tweet_id = $_POST["post_id"];
-    $user_id = 3; // session user
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $json_data = file_get_contents('php://input');
+    $data = json_decode($json_data, true);
 
-     $sql = "INSERT INTO pelqimet (tweet_id, userLikes_id) VALUES (:tdwId, :usrId)";
-     $ddlStatement = $dbConnection->prepare($sql);
+    if (isset($data["like"])) {
+        $tweet_id = $data["tweet_id"];
+        $like = $data["like"] === true ? 1 : 0;
 
-     $ddlStatement->bindParam(":tdwId", $tweet_id);
-     $ddlStatement->bindParam(":usrId", $user_id);
+        try {
+            $dbConnection->beginTransaction();
 
-     $ddlStatement->execute();
+            $sqlCheckLike = "SELECT COUNT(*) FROM pelqimet WHERE interaksioni_id IN (SELECT interaksioni_id FROM interaksionet WHERE tweet_id = :tweet_id AND perdoruesi_id = :perdoruesi_id)";
+            $stmtCheckLike = $dbConnection->prepare($sqlCheckLike);
+            $stmtCheckLike->bindParam(":tweet_id", $tweet_id);
+            $stmtCheckLike->bindParam(":perdoruesi_id", $perdoruesi_id);
+            $stmtCheckLike->execute();
+            $hasLiked = $stmtCheckLike->fetchColumn();
 
-    echo "Like added successfully!";
+            if ($hasLiked) {
+                $sqlDeleteLike = "DELETE FROM pelqimet WHERE interaksioni_id IN (SELECT interaksioni_id FROM interaksionet WHERE tweet_id = :tweet_id AND perdoruesi_id = :perdoruesi_id)";
+                $stmtDeleteLike = $dbConnection->prepare($sqlDeleteLike);
+                $stmtDeleteLike->bindParam(":tweet_id", $tweet_id);
+                $stmtDeleteLike->bindParam(":perdoruesi_id", $perdoruesi_id);
+                $stmtDeleteLike->execute();
+
+                $sqlDeleteInteraksionet = "DELETE FROM interaksionet WHERE tweet_id = :tweet_id AND perdoruesi_id = :perdoruesi_id";
+                $stmtDeleteInteraksionet = $dbConnection->prepare($sqlDeleteInteraksionet);
+                $stmtDeleteInteraksionet->bindParam(":tweet_id", $tweet_id);
+                $stmtDeleteInteraksionet->bindParam(":perdoruesi_id", $perdoruesi_id);
+                $stmtDeleteInteraksionet->execute();
+                $dbConnection->commit();
+                echo json_encode([
+                    "success" => true,
+                    "message" => "Tweet unliked successfully",
+                    "isLiked" => !$hasLiked
+                ]);
+            } else {
+                $sqlLikeTweet = "INSERT INTO interaksionet (tweet_id, perdoruesi_id, krijuar_me, lloji_interaksionit) VALUES (:tweet_id, :perdoruesi_id, NOW(), 1)";
+                $stmtLikeTweet = $dbConnection->prepare($sqlLikeTweet);
+                $stmtLikeTweet->bindParam(":tweet_id", $tweet_id);
+                $stmtLikeTweet->bindParam(":perdoruesi_id", $perdoruesi_id);
+                $stmtLikeTweet->execute();
+
+                $interaksioni_id = $dbConnection->lastInsertId();
+
+                $sqlInsertLike = "INSERT INTO pelqimet (interaksioni_id, liked_by_id, tweet_id) VALUES (:intrId, :usrId, :tdwId)";
+                $stmtInsertLike = $dbConnection->prepare($sqlInsertLike);
+                $stmtInsertLike->bindParam(":intrId", $interaksioni_id);
+                $stmtInsertLike->bindParam(":usrId", $perdoruesi_id);
+                $stmtInsertLike->bindParam(":tdwId", $tweet_id);
+                $stmtInsertLike->execute();
+                $dbConnection->commit();
+                echo json_encode(["success" => true, "message" => "Tweet liked successfully", "isLiked" => !$hasLiked]);
+            }
+        } catch (PDOException $e) {
+            $dbConnection->rollBack();
+            echo json_encode(["success" => false, "message" => "failed to perform a like operation: " . $e->getMessage()]);
+        }
+    } else {
+        echo json_encode(["success" => false, "message" => "missing like"]);
+    }
+} else {
+    echo json_encode(["success" => false, "message" => "Invalid request method"]);
 }

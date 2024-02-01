@@ -23,8 +23,6 @@ html {
 .home-icon {
   background-repeat: no-repeat;
   background-size: contain;
-  height: 3rem;
-  width: 3rem;
   border-radius: 60%;
   margin-top: 1rem;
   margin-bottom: 2rem;
@@ -91,7 +89,7 @@ html {
 .nav-elem-ctn:hover {
   border-radius: 30rem;
   transition: background-color 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav-elem-ctn a:hover {
@@ -108,8 +106,8 @@ html {
 
 /* Main content */
 .main-ctn {
-  border-left: 0.8px solid gray;
-  border-right: 0.8px solid gray;
+  border-left: 0.8px solid rgb(255, 255, 255, 0.1);
+  border-right: 0.8px solid rgb(255, 255, 255, 0.1);
   min-height: 100%;
 }
 
@@ -120,6 +118,11 @@ html {
   align-items: center;
   position: relative;
   opacity: 1;
+  /* background: rgba(255, 255, 255, 0.27);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.6px);
+-webkit-backdrop-filter: blur(8.6px); */
 }
 
 .post-interact-ctn {
@@ -181,6 +184,7 @@ html {
 .post-interaction-ctn {
   margin-top: 1rem;
   display: flex;
+  align-items: center;
   width: 100%;
   justify-content: space-between;
 }
@@ -189,6 +193,7 @@ html {
   display: flex;
   margin-right: 1rem;
   gap: 1rem;
+  align-items: center;
 }
 
 .profile-card-nickname {
@@ -273,7 +278,7 @@ html {
 
 #tweet:focus {
   border: none;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.1);
   outline: none;
 }
 
@@ -318,7 +323,7 @@ html {
   justify-content: flex-start;
 }
 .username-feed {
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 .feed-post-content {
@@ -326,14 +331,21 @@ html {
   flex-direction: column;
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .feed-post {
   display: flex;
   width: 100%;
-  border-bottom: 0.8px solid gray;
-  border-top: 0.8px solid gray;
+  border-bottom: 0.8px solid rgb(255, 255, 255, 0.1);
+  border-top: 0.8px solid rgb(255, 255, 255, 0.1);
   gap: 1rem;
+}
+
+.feed-post:hover {
+  background-color: rgb(10 10 10);
+  cursor: pointer;
+  transition: all 0.1s ease-in;
 }
 
 .feed-username-options {
@@ -351,7 +363,7 @@ html {
   max-width: 77%;
   width: auto;
   height: auto;
-  border: 0.8px solid gray;
+  border: 0.8px solid rgb(255, 255, 255, 0.1);
   border-radius: 1rem;
   object-fit: cover;
 }
@@ -505,6 +517,143 @@ html {
   color: #515863;
 }
 
+.input-tweet-ctn {
+  margin-top: 15px;
+}
+
+.like-post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #d5d9db;
+}
+
+.retweet-post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #d5d9db;
+}
+
+.comment-post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #d5d9db;
+}
+
+.views-post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #d5d9db;
+}
+
+.like-post-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #d5d9db;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.comment-post-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #d5d9db;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.retweet-post-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #d5d9db;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.views-post-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #d5d9db;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.like-post-ctn:hover {
+  background: rgba(241, 76, 79, 0.12);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.8px);
+  -webkit-backdrop-filter: blur(4.8px);
+}
+
+.retweet-post-ctn:hover {
+  background: rgba(135, 192, 85, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.comment-post-ctn:hover {
+  background: rgba(87, 175, 216, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all 0.1s ease-in;
+}
+
+.views-post-ctn:hover {
+  background: rgba(87, 175, 216, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all 0.1s ease-in;
+}
+
+.post-text-dsc-ctn {
+  margin-bottom: 5px;
+}
+
+.logout-dropUp {
+  height: 120px;
+  width: 100%;
+  background-color: yellow;
+  display: flex;
+  position: relative;
+  top: 0;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: #424242;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #686868;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(62, 63, 63, 0.8);
+}
+
 @media only screen and (max-width: 1200px) {
   .nav-text {
     display: none;
@@ -600,9 +749,9 @@ html {
     margin-top: 4px;
   }
 
-  .feed-mode-ctn {
-    position: sticky;
-    top: 0px;
+  /* .feed-mode-ctn {
+    position: sticky !important;
+    top: 0 !important;
     background-color: rgba(0, 0, 0, 0.7);
-  }
+  } */
 }

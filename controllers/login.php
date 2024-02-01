@@ -26,10 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user_id'] = $user['perdoruesi_id'];
         $_SESSION['username'] = $user['emri'];
         $_SESSION['email'] = $user['email'];
+        $_SESSION['isAdmin'] = $user['eshte_admin'];
+
+        $redirectPath = $user['eshte_admin'] ? "../pages/dashboard.php" : "../pages/homeView.php";
 
         $response = [
             'status' => 'success',
-            'redirect' => '../pages/homeView.php'
+            'redirect' => $redirectPath
         ];
 
         header('Content-Type: application/json');

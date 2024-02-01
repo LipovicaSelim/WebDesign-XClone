@@ -511,6 +511,15 @@ html {
   color: #515863;
 }
 
+.post-text-dsc-ctn {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.profile-card-username .username-feed {
+  font-size: 0.9rem;
+}
+
 @media only screen and (max-width: 1200px) {
   .nav-text {
     display: none;

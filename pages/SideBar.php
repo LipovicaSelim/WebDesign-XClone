@@ -10,7 +10,7 @@ $acRepo = new AccountRepository();
         <div class="sidebar-flex-container">
             <div class="side-nav-bar-ctn">
                 <div class="home-logo">
-                    <a href="./home.html"><img class="home-icon" src="./images/dXs.svg" alt="LOGO" style="object-fit: contain;"></a>
+                    <a href="./home.html"><img class="home-icon" src="./images/dXsLogo.svg" width="150px" alt="LOGO" style="object-fit: contain;"></a>
                 </div>
                 <div class="nav-sidebar-ctn">
                     <nav class="nav-sidebar">

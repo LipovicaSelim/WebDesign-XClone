@@ -147,7 +147,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+/*  ------ Validate email for both; incorrect email format and if an account with this email exists or not */
 let emailValidationTimeout;
+let emailFormatValidationTimeout;
+let emailValidationStatus;
 
 function validateEmail(email) {
   return String(email)
@@ -158,18 +161,64 @@ function validateEmail(email) {
 }
 
 function delayedEmailValidation(email) {
+  const nextButton = document.getElementById("nextButton");
   emailValidSpan.style.display = "none";
-
+  clearTimeout(emailFormatValidationTimeout);
   clearTimeout(emailValidationTimeout);
 
-  emailValidationTimeout = setTimeout(() => {
-    const isValid = validateEmail(email);
-    if (!isValid) {
+  emailFormatValidationTimeout = setTimeout(() => {
+    const isValidFormat = validateEmail(email);
+    if (!isValidFormat) {
+      nextButton.classList.add("nextButtonDisabled");
+      nextButton.setAttribute("disabled", "true");
       emailValidSpan.style.display = "block";
-      emailValidSpan.textContent = "Please enter a valid email.";
-      console.log("Invalid email:", email);
+      emailValidSpan.textContent = "This is not a valid email.";
+      emailValidationStatus = "error";
+      return;
     }
-  }, 2000);
+  }, 4000);
+
+  const isValidFormat = validateEmail(email);
+  if (isValidFormat) {
+    emailValidationTimeout = setTimeout(() => {
+      fetch("../controllers/checkEmailExists.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: "email=" + email,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status === "error") {
+            emailValidSpan.style.display = "block";
+            emailValidSpan.textContent = data.message;
+            nextButton.classList.add("nextButtonDisabled");
+            nextButton.setAttribute("disabled", "true");
+            emailValidationStatus = "error";
+            updateNextButtonClass();
+          } else {
+            emailValidSpan.style.display = "none";
+            updateNextButtonClass();
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }, 3000);
+  }
+}
+
+function updateNextButtonClass() {
+  const nextButton = document.getElementById("nextButton");
+  console.log("Validation status: ", emailValidationStatus);
+  if (emailValidationStatus === "error") {
+    nextButton.classList.add("nextButtonDisabled");
+    nextButton.setAttribute("disabled", "true !important");
+  } else if (emailValidationStatus === "success") {
+    nextButton.classList.remove("nextButtonDisabled");
+    nextButton.removeAttribute("disabled");
+  }
 }
 
 if (!window.scriptLoaded) {
@@ -180,27 +229,38 @@ if (!window.scriptLoaded) {
 
   let currentStep = 1;
 
+  let updateTimeout;
+
   function updateNextButton() {
-    const nextButton = document.getElementById("nextButton");
-    const currentStepContainer = document.getElementById(`step${currentStep}`);
-    const inputFields = currentStepContainer.querySelectorAll("input, select");
+    clearTimeout(updateTimeout);
+    updateTimeout = setTimeout(() => {
+      const nextButton = document.getElementById("nextButton");
+      const currentStepContainer = document.getElementById(
+        `step${currentStep}`
+      );
+      const inputFields =
+        currentStepContainer.querySelectorAll("input, select");
 
-    const hasEmptyField = Array.from(inputFields).some(
-      (input) => input.value.trim() === ""
-    );
-    if (!hasEmptyField) {
-      nextButton.classList.remove("nextButtonDisabled");
-      console.log("Next button clicked if");
-      nextButton.classList.add("nextButtonEnabled");
-      nextButton.removeAttribute("disabled");
-      // console.log("Proceed to next step");
-    } else {
-      nextButton.classList.remove("nextButtonEnabled");
-      console.log("Next button clicked else");
-
-      nextButton.classList.add("nextButtonDisabled");
-      nextButton.setAttribute("disabled", "true");
-    }
+      const hasEmptyField = Array.from(inputFields).some(
+        (input) => input.value.trim() === ""
+      );
+      if (!hasEmptyField && emailValidationStatus !== "error") {
+        console.log(
+          "Update next button function, emailValidationstatus: ",
+          emailValidationStatus
+        );
+        nextButton.classList.remove("nextButtonDisabled");
+        console.log("Next button clicked if");
+        nextButton.classList.add("nextButtonEnabled");
+        nextButton.removeAttribute("disabled");
+        // console.log("Proceed to next step");
+      } else {
+        nextButton.classList.remove("nextButtonEnabled");
+        console.log("Next button clicked else");
+        nextButton.classList.add("nextButtonDisabled");
+        nextButton.setAttribute("disabled", "true");
+      }
+    }, 0);
   }
 
   function handleClick() {
