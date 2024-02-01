@@ -1,7 +1,7 @@
 <?php
 
 include '../controllers/protected.php';
-
+session_start();
 $getTweetsFromAccountsFollow = "SELECT tweets.tweet_id, Tweets.perdoruesi_id, Tweets.tweet_body
  FROM perdoruesit JOIN ndjeket ON perdoruesit.perdoruesi_id = ndjeket.ndjekesi_id 
  JOIN Tweets ON ndjeket.ndjek_id = Tweets.perdoruesi_id 
@@ -37,5 +37,8 @@ $getTweetsFromAccountsFollow = "SELECT tweets.tweet_id, Tweets.perdoruesi_id, Tw
     </div>
 </body>
 <script src="./home.js"></script>
+<script>
+    console.log("User ID from session: ", <?php echo json_encode($_SESSION['user_id']); ?>);
+</script>
 
 </html>

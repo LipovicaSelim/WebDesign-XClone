@@ -23,8 +23,6 @@ html {
 .home-icon {
   background-repeat: no-repeat;
   background-size: contain;
-  height: 3rem;
-  width: 3rem;
   border-radius: 60%;
   margin-top: 1rem;
   margin-bottom: 2rem;
@@ -91,7 +89,7 @@ html {
 .nav-elem-ctn:hover {
   border-radius: 30rem;
   transition: background-color 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .nav-elem-ctn a:hover {
@@ -606,3 +604,4 @@ html {
     background-color: rgba(0, 0, 0, 0.7);
   }
 }
+
