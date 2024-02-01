@@ -2,11 +2,18 @@
 declare(strict_types=1);
 include_once("../helpers/AccountRepository.php");
 include_once("../helpers/TweetRepository.php");
-$activeSessionUser = 7;
+$activeSessionUser = 4;
 $acRepo = new AccountRepository();
 $twRepo = new TweetRepository();
-var_dump($acRepo->getProfilePicture($activeSessionUser));
 $tweets = $twRepo->getAllTweetsByUserId($activeSessionUser);
+$userImage = $acRepo->getProfilePicture($activeSessionUser)[0];
+$userBanner = $acRepo->getProfileBanner($activeSessionUser)[0];
+$bio = $acRepo->getAccountFieldById($activeSessionUser, "bio")[0];
+$birthDate = $acRepo->getAccountFieldById($activeSessionUser,"datelindja");
+$createDate = $acRepo->getAccountFieldById($activeSessionUser,"krijuar_me");
+$followingCount = $acRepo->getFollowingCount($activeSessionUser);
+$followersCount = $acRepo->getFollowersCount($activeSessionUser);
+
 ?>
 
 
@@ -18,10 +25,10 @@ $tweets = $twRepo->getAllTweetsByUserId($activeSessionUser);
                 <div class="profile-details-ctn">
                     <div class="profile-details-flex-ctnm">
                         <div class="cover-pic-ctn">
-                            <img src="images/profile-pics/cover-pic.jpg" alt="cover-pic" id="cover-pic">
+                            <img src=<?php echo($userBanner) ?> alt="cover-pic" id="cover-pic">
                         </div>
                         <div class="profile-pic-ctn">
-                            <img class="profile-pic" id="profile-pg-pic" src="images/defaultProfilePic.jpg" alt="profile-pic">
+                            <img class="profile-pic" id="profile-pg-pic" src=<?php echo($userImage) ?> alt="profile-pic">
                         </div>
                         <div class="edit-profile-btn-ctn">
                             <button class="edit-profile-btn">Edit profile</button>
@@ -33,14 +40,14 @@ $tweets = $twRepo->getAllTweetsByUserId($activeSessionUser);
                                     <div class="username profile-card-username"><?php echo("@".$acRepo->getAccountFieldById($activeSessionUser,"pseudonimi")) ?></div>
                                 </div>
                                 <div class="profile-description">
-                                    <span class="description-txt">Still using PHP huh ?</span>
+                                    <span class="description-txt"><?php echo($bio)?></span>
                                 </div>
                                 <div class="birthdate-join-date-ctn">
                                     <div class="bdate-img-ctn">
                                         <img src="images/profile-pics/birthdate-icon.svg" alt="birthdate-icon">
                                     </div>
                                     <div class="birthdate-ctn">
-                                        <span class="bday-txt username profile-card-username">On November 6, 1999</span>
+                                        <span class="bday-txt username profile-card-username"><?php echo($birthDate) ?></span>
                                     </div>
                                     <div class="join-dt-ctn">
                                         <div class="clnd-img-ctn">
@@ -54,11 +61,11 @@ $tweets = $twRepo->getAllTweetsByUserId($activeSessionUser);
                                 </div>
                                 <div class="followers-following-ctn">
                                         <div class="following-ctn follow-ctn">
-                                            <span class="follow-number following">999</span>
+                                            <span class="follow-number following"><?php echo($followingCount) ?></span>
                                             <span class="fllw-txt">Following</span>
                                         </div>
                                         <div class="followers-ctn follow-ctn">
-                                            <span class="follow-number following">999</span>
+                                            <span class="follow-number following"><?php echo($followersCount) ?></span>
                                             <span class="fllw-txt">Followers</span>
                                         </div>
                                 </div>
@@ -72,7 +79,7 @@ $tweets = $twRepo->getAllTweetsByUserId($activeSessionUser);
                     <?php foreach ($tweets as $tweet) { ?>
                     <div class="feed-post">
                         <div class="feed-profile-ctn">
-                            <img class="profile-pic" src="images/defaultProfile1.svg" alt="default profile pic">
+                            <img class="profile-pic" src=<?php echo($userImage) ?> alt="default profile pic">
                         </div>
                         <div class="feed-post-content">
                             <div class="feed-username-options">
@@ -98,7 +105,7 @@ $tweets = $twRepo->getAllTweetsByUserId($activeSessionUser);
                             <div class="post-interaction-ctn">
                                 <div class="comment-post"> <span></span> <img src="images/comment.svg" alt="comment"></div>
                                 <div class="retweet-post"><img src="images/retweet.svg" alt="retweet"></div>
-                                <div class="like-post">  <span><?php echo($tweetRep->getLikesForTweet($tweet["tweet_id"])) ?></span>   <img src="images/like.svg" alt="like"></div>
+                                <div class="like-post">  <span><?php echo($twRepo->getLikesForTweet($tweet["tweet_id"])) ?></span>   <img src="images/like.svg" alt="like"></div>
                                 <div class="views-post"><img src="images/statviews.svg" alt="stats"></div>
                                 <div class="bmk-share-ctn">
                                     <div class="bookmark-post"><img src="images/bookmark.svg" alt="bookmarks"></div>

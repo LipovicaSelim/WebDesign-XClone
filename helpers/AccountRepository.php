@@ -45,28 +45,7 @@ class AccountRepository {
         $imgUrlArray = $statement->fetch();
         return $imgUrlArray;
     }
-
-       public function getProfilePicture1(int $userId): array {
-        $connection = $this->dbConnection;
-        $query = "select profile_img_url from media where media_id = $userId;";
-        $statement = $connection->query($query);
-        $imgUrlArray = $statement->fetch();
-        if(isset($imgUrlArray[0])){
-            return $imgUrlArray;
-        } else {
-            return "images/defaultProfile1.svg";
-        }
-    }
-
-           public function getProfileBanner1(int $userId): array {
-        $connection = $this->dbConnection;
-        $query = "select profile_img_url from media where media_id = $userId;";
-        $statement = $connection->query($query);
-        $imgUrlArray = $statement->fetch();
-        return $imgUrlArray[1];
-    }
-    
-           public function getProfilePicture(int $userId): string {
+           public function getProfilePicture(int $userId): mixed {
         $connection = $this->dbConnection;
         $query = "select profile_img_url from media where media_id = $userId;";
         $statement = $connection->query($query);
@@ -78,16 +57,39 @@ class AccountRepository {
         }
     }
 
-           public function getProfileBanner(int $userId): array {
-        $connection = $this->dbConnection;
-        $query = "select profile_img_url from media where media_id = $userId;";
-        $statement = $connection->query($query);
-        $imgUrlArray = $statement->fetch();
-        if(isset($imgUrlArray["banner_img_url"])){
-            return $imgUrlArray;
-        } else {
-            return "images/defaultProfile1.svg";
+        public function getProfileBanner(int $userId): mixed {
+            $connection = $this->dbConnection;
+             $query = "select banner_img_url from media where media_id = $userId;";
+             $statement = $connection->query($query);
+             $imgUrlArray = $statement->fetch();
+             if(isset($imgUrlArray["banner_img_url"])){
+                  return $imgUrlArray;
+             } else {
+               return "images/defaultProfile1.svg";
+             }
         }
-    }
+
+        public function getFollowingCount(int $userId) {
+            $connection = $this->dbConnection;
+             $query = "SELECT count(ndjek_id) FROM `ndjeket`where ndjekesi_id = $userId;";
+             $statement = $connection->query($query);
+             $followingCount = $statement->fetch();
+             if(!isset($followingCount)){
+                return 0;
+            }
+               return $followingCount[0];
+        }
+
+            public function getFollowersCount(int $userId) {
+            $connection = $this->dbConnection;
+             $query = "SELECT count(ndjekesi_id) FROM `ndjeket`where ndjek_id = $userId;";
+             $statement = $connection->query($query);
+             $followersCount = $statement->fetch();
+             if(!isset($followersCount)){
+                return 0;
+            }
+               return $followersCount[0];
+        }
+
 
 }
