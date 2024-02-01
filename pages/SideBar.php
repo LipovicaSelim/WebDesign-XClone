@@ -3,11 +3,9 @@
 declare(strict_types=1);
 include_once("../helpers/AccountRepository.php");
 
-// $activeSessionUser = $_SESSION["user_id"];
-$activeSessionUser = 3;
-$acRepo = new AccountRepository();
+$activeSessionUser = 1;
 
-$activeUserId = 4;
+$acRepo = new AccountRepository();
 ?>
 <div class="sidebar-ctn">
     <div class="fixed">

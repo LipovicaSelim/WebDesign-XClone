@@ -1,5 +1,4 @@
 <?php
-
 include '../controllers/protected.php';
 session_start();
 $getTweetsFromAccountsFollow = "SELECT tweets.tweet_id, Tweets.perdoruesi_id, Tweets.tweet_body

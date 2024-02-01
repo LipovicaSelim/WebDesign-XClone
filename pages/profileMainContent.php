@@ -2,7 +2,8 @@
 declare(strict_types=1);
 include_once("../helpers/AccountRepository.php");
 include_once("../helpers/TweetRepository.php");
-$activeSessionUser = 3;
+
+$activeSessionUser = 4;
 $acRepo = new AccountRepository();
 $twRepo = new TweetRepository();
 $tweets = $twRepo->getAllTweetsByUserId($activeSessionUser);
