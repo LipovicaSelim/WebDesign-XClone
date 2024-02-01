@@ -651,7 +651,7 @@ backdrop-filter: blur(8.6px);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(62, 63, 63, 0.8);
+  background-color: rgba(163, 163, 163, 0.8);
 }
 
 @media only screen and (max-width: 1200px) {

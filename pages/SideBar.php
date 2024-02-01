@@ -3,7 +3,8 @@
 declare(strict_types=1);
 include_once("../helpers/AccountRepository.php");
 
-$activeSessionUser = $_SESSION["user_id"];
+// $activeSessionUser = $_SESSION["user_id"];
+$activeSessionUser = 3;
 $acRepo = new AccountRepository();
 
 $activeUserId = 4;

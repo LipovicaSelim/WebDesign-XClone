@@ -48,11 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $mail->addAddress($email);
     $mail->Subject = 'Verification Code';
     $mail->Body = '<html>
-    <body>
-    <h1>Confirm your email address</h1><br>
-    <p>In order to continue on registering in our platform please write this code to get started to dXsClone</p>
-    </body>
-    </html>' . $verificationCode;
+                   <body>
+                   <h1>Confirm your email address</h1><br>
+                   <p>In order to continue on registering in our platform please write this code to get started to dXsClone</p>
+                   ' . $verificationCode . '
+                   </body>
+                   </html>';
 
     // Send the email
     if ($mail->send()) {

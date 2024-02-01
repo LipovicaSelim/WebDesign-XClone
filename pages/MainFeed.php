@@ -18,7 +18,7 @@ $tweets = $tweetRep->getAllTweetsOfFollowed($activeUserId);
         </div>
         <div class="post-modal-ctn">
             <div class="prof-pic-ctn">
-                <a href="./profile.html"><img class="profile-pic" src=<?php echo ($acRepo->getProfilePicture($activeUserId)) ?> alt="default profile pic" style="border-radius:50%"></a>
+                <a href="./profile.html"><img class="profile-pic" src=<?php echo ($acRepo->getProfilePicture($activeUserId)[0]) ?> alt="default profile pic" style="border-radius:50%"></a>
             </div>
             <div class="post-interact-ctn">
                 <div class="input-tweet-ctn">
@@ -54,8 +54,9 @@ $tweets = $tweetRep->getAllTweetsOfFollowed($activeUserId);
         <div class="feed-ctn">
             <?php foreach ($tweets as $tweet) { ?>
                 <div class="feed-post" data-tweet_id="<?php echo $tweet['tweet_id'] ?>">
+                
                     <div class="feed-profile-ctn">
-                        <img class="profile-pic" src="images/defaultProfile1.svg" alt="default profile pic">
+                        <img class="profile-pic" src=<?php echo($acRepo->getProfilePicture($tweet["perdoruesi_id"])[0])?> alt="default profile pic">
                     </div>
                     <div class="feed-post-content">
                         <div class="feed-username-options">
