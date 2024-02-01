@@ -30,7 +30,9 @@ class TweetRepository
                   FROM ndjeket
                   inner JOIN tweets ON ndjeket.ndjek_id = tweets.perdoruesi_id
                   where ndjeket.ndjekesi_id = $userId  
-                  ORDER BY `tweets`.`krijuar_me` DESC";
+                  ORDER BY `tweets`.`krijuar_me` DESC
+                  LIMIT 10
+                  ";
 
         $statement = $connection->query($query);
         $tweets = $statement->fetchAll();

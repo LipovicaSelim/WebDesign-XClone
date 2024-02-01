@@ -7,7 +7,7 @@ $getTweetsFromAccountsFollow = "SELECT tweets.tweet_id, Tweets.perdoruesi_id, Tw
  JOIN Tweets ON ndjeket.ndjek_id = Tweets.perdoruesi_id 
  WHERE perdoruesit.perdoruesi_id = 1 
  ORDER BY `Tweets`.`krijuar_me` ASC;"
-?>
+    ?>
 <!-- index.php -->
 <!DOCTYPE html>
 <html lang="en">
