@@ -80,15 +80,30 @@ $tweets = $tweetRep->getAllTweetsOfFollowed($activeUserId);
                         <?php }
                         } ?>
                         <div class="post-interaction-ctn">
-                            <div class="comment-post"> <span></span> <img src="images/comment.svg" alt="comment"></div>
-                            <div class="retweet-post"><img src="images/retweet.svg" alt="retweet"></div>
-                            <div class="like-post">
-                                <span><?php echo ($tweetRep->getLikesForTweet($tweet["tweet_id"])) ?></span>
-                                <img id="like-button-<?php echo $tweet["tweet_id"]; ?>" src="images/like.svg" alt="like">
+                            <div class="comment-post">
+                                <div class="comment-post-ctn">
+                                    <img src="images/comment.svg" alt="comment" width="20px">
+                                </div>
+                                <span></span>
                             </div>
-                            <div class="views-post"><img src="images/statviews.svg" alt="stats"></div>
+                            <div class="retweet-post">
+                                <div class="retweet-post-ctn">
+                                    <img src="images/retweet.svg" alt="retweet " width="20px">
+                                </div>
+                            </div>
+                            <div class="like-post">
+                                <div class="like-post-ctn">
+                                    <img id="like-button-<?php echo $tweet["tweet_id"]; ?>" src="images/like.svg" alt="like" width="20px">
+                                </div>
+                                <span><?php echo ($tweetRep->getLikesForTweet($tweet["tweet_id"])) ?></span>
+                            </div>
+                            <div class="views-post">
+                                <div class="views-post-ctn">
+                                    <img src="images/statviews.svg" alt="stats">
+                                </div>
+                            </div>
                             <div class="bmk-share-ctn">
-                                <div class="bookmark-post"><img src="images/bookmark.svg" alt="bookmarks"></div>
+                                <div class="bookmark-post"><img src="images/bookmark.svg" alt="bookmarks" width="20px"></div>
                                 <div class="shr"><img src="images/share.svg" alt="share"></div>
                             </div>
                         </div>
