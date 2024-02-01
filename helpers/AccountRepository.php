@@ -46,26 +46,48 @@ class AccountRepository {
         return $imgUrlArray;
     }
 
-       public function getProfilePicture(int $userId): string {
+       public function getProfilePicture1(int $userId): array {
         $connection = $this->dbConnection;
         $query = "select profile_img_url from media where media_id = $userId;";
         $statement = $connection->query($query);
         $imgUrlArray = $statement->fetch();
-        $url = $imgUrlArray[0];
-        if(isset($url)){
-            return $url;
+        if(isset($imgUrlArray[0])){
+            return $imgUrlArray;
         } else {
             return "images/defaultProfile1.svg";
         }
     }
 
-           public function getProfileBanner(int $userId): string {
+           public function getProfileBanner1(int $userId): array {
         $connection = $this->dbConnection;
         $query = "select profile_img_url from media where media_id = $userId;";
         $statement = $connection->query($query);
         $imgUrlArray = $statement->fetch();
         return $imgUrlArray[1];
     }
+    
+           public function getProfilePicture(int $userId): string {
+        $connection = $this->dbConnection;
+        $query = "select profile_img_url from media where media_id = $userId;";
+        $statement = $connection->query($query);
+        $imgUrlArray = $statement->fetch();
+        if(isset($imgUrlArray["profile_img_url"])){
+            return $imgUrlArray;
+        } else {
+            return "images/defaultProfile1.svg";
+        }
+    }
 
+           public function getProfileBanner(int $userId): array {
+        $connection = $this->dbConnection;
+        $query = "select profile_img_url from media where media_id = $userId;";
+        $statement = $connection->query($query);
+        $imgUrlArray = $statement->fetch();
+        if(isset($imgUrlArray["banner_img_url"])){
+            return $imgUrlArray;
+        } else {
+            return "images/defaultProfile1.svg";
+        }
+    }
 
 }

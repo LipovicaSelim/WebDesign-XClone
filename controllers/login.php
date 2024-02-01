@@ -3,7 +3,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 include "../helpers/DbConnection.php";
+include "../pages/homeView.php";
 session_start();
+
+//me bo redirect back ne homeView nese useri nuk bon log out amo munohet me qas landingPage
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $usernameOrEmail = $_POST['usernameOrEmail'];
@@ -16,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['usernameOrEmail' => $usernameOrEmail]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
 
     if ($user && password_verify($password, $user['fjalekalimi'])) {
         $_SESSION['user_id'] = $user['perdoruesi_id'];

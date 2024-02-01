@@ -2,18 +2,15 @@
 
 declare(strict_types=1);
 include_once("../helpers/AccountRepository.php");
-
-$activeSessionUser = $_SESSION["user_id"];
+$activeSessionUser = 1;
 $acRepo = new AccountRepository();
-
-$activeUserId = 4;
 ?>
 <div class="sidebar-ctn">
     <div class="fixed">
         <div class="sidebar-flex-container">
             <div class="side-nav-bar-ctn">
                 <div class="home-logo">
-                    <a href="./home.html"><img class="home-icon" src="./images/dXs.svg" alt="LOGO" style="object-fit: co;"></a>
+                    <a href="./home.html"><img class="home-icon" src="./images/dXs.svg" alt="LOGO" style="object-fit: contain;"></a>
                 </div>
                 <div class="nav-sidebar-ctn">
                     <nav class="nav-sidebar">

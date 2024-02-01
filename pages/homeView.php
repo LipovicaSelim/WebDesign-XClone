@@ -1,6 +1,7 @@
 <?php
-
 include '../controllers/protected.php';
+
+
 
 $getTweetsFromAccountsFollow = "SELECT tweets.tweet_id, Tweets.perdoruesi_id, Tweets.tweet_body
  FROM perdoruesit JOIN ndjeket ON perdoruesit.perdoruesi_id = ndjeket.ndjekesi_id 

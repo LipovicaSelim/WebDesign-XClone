@@ -2,10 +2,11 @@
 declare(strict_types=1);
 include_once("../helpers/AccountRepository.php");
 include_once("../helpers/TweetRepository.php");
+
 $tweetRep = new TweetRepository();
 $acRepo = new AccountRepository();
 $tweets = $tweetRep->getAllTweetsOfFollowed(2);
-$activeUserId = 5;
+$activeUserId = $_SESSION["user_id"];
 ?>
         <div class="main-side-ctn">
             <div class="main-ctn">
