@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 include_once("../helpers/AccountRepository.php");
+
 $activeSessionUser = 1;
+
 $acRepo = new AccountRepository();
 ?>
 <div class="sidebar-ctn">
