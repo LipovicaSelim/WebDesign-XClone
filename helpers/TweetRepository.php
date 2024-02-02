@@ -12,11 +12,28 @@ class TweetRepository
         $this->dbConnection = $connection->dbConnect();
     }
 
+
+    
+    public function getTweetById(int $tweetId): array {
+        $connection  = $this->dbConnection;
+        $query = "SELECT * FROM tweets WHERE tweet_id = $tweetId";
+        $statement = $connection->query($query);
+
+        $tweet = $statement->fetchAll();
+        return $tweet;
+    }
+
+    public function getTweetFieldById(int $tweetId, string $field) {
+            $tweetFields = self::getTweetById($tweetId);
+            return $tweetFields[0][$field];
+        }
+
+
     public function getAllTweetsByUserId(int $userId): array
     {
         $connection  = $this->dbConnection;
 
-        $query = "SELECT * FROM TWEETS WHERE perdoruesi_id = $userId";
+        $query = "SELECT * FROM TWEETS WHERE perdoruesi_id = $userId ORDER BY  krijuar_me DESC";
         $statement = $connection->query($query);
 
         $tweets = $statement->fetchAll();
