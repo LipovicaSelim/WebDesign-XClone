@@ -1,5 +1,10 @@
 <?php
-include '../controllers/protected.php'
+include '../controllers/protected.php';
+include_once("../helpers/AccountRepository.php");
+include_once("../helpers/TweetRepository.php");
+$acRepo = new AccountRepository();
+$twRepo = new TweetRepository();
+$accounts = $acRepo->getAllAccounts();
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +82,29 @@ include '../controllers/protected.php'
                         <?php include_once("chart.php"); ?>
                     </div>
                 </div>
-                <div class="anonuncements-ctn"></div>
+                <div class="anonuncements-ctn">
+                    <?php foreach( $accounts as $account ) { ?>
+                        <a href='edit.php?id=<?php echo($account["perdoruesi_id"]) ?>'>
+                        <div class="user-cnt">
+                        <div class="username">
+                        <?php echo($account["perdoruesi_id"]." ".$account["pseudonimi"]) ?>
+                        </div>
+                        <div class="tweetCount">
+                            <?php echo($acRepo->getTweetCount($account["perdoruesi_id"])) ?>
+                        </div>
+                        <div class="createdAt">
+                            <?php echo($account["krijuar_me"])?>
+                        </div>
+                        <div class="interaksionet">
+                         <?php echo($acRepo->getInteractionsCount($account["perdoruesi_id"])) ?>
+                        </div>
+                        <div class="edit-user-ctn">
+                            <img id="closeButton" src="images/closeButton.svg" alt="edit button">
+                        </div>
+                    </div>
+                    </a>
+                    <?php } ?>
+                </div>
             </div>
         </div>
     </section>
@@ -113,5 +140,4 @@ include '../controllers/protected.php'
             console.error('Error fetching total users count:', error);
         });
 </script>
-
 </html>

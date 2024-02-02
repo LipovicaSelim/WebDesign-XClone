@@ -9,6 +9,19 @@ class AccountRepository {
         $this->dbConnection = $connection->dbConnect();
     }
     
+    public function getAllAccounts(): array {
+        $connection  = $this->dbConnection;
+        $query = "SELECT * FROM perdoruesit";
+        $statement = $connection->query($query);
+
+        $user = $statement->fetchAll();
+        return $user;
+    }
+
+
+
+
+
     public function getAccountById(int $userId): array {
         $connection  = $this->dbConnection;
         $query = "SELECT * FROM perdoruesit WHERE perdoruesi_id = $userId";
@@ -90,6 +103,28 @@ class AccountRepository {
             }
                return $followersCount[0];
         }
+
+           public function getTweetCount(int $userId) {
+            $connection = $this->dbConnection;
+             $query = "SELECT count(*) FROM `tweets` where perdoruesi_id = $userId";
+             $statement = $connection->query($query);
+             $tweetCount = $statement->fetch();
+             if(!isset($tweetCount)){
+                return 0;
+            }
+               return $tweetCount[0];
+           }
+
+                  public function getInteractionsCount(int $userId) {
+            $connection = $this->dbConnection;
+             $query = "SELECT count(*) FROM `interaksionet` where perdoruesi_id = $userId";
+             $statement = $connection->query($query);
+             $interksionet = $statement->fetch();
+             if(!isset($interksionet)){
+                return 0;
+            }
+               return $interksionet[0];
+           }
 
 
 }
