@@ -48,7 +48,7 @@ class TweetRepository
                   inner JOIN tweets ON ndjeket.ndjek_id = tweets.perdoruesi_id
                   where ndjeket.ndjekesi_id = $userId  
                   ORDER BY `tweets`.`krijuar_me` DESC
-                  LIMIT 10
+                  LIMIT 20
                   ";
 
         $statement = $connection->query($query);
@@ -135,4 +135,62 @@ class TweetRepository
             echo "Error: " . $e->getMessage();
         }
     }
+
+    public function getCommentsForPost(int $tweetId) : array {
+        $connection  = $this->dbConnection;
+        $query = "SELECT k.teksti_komentit, k.komentuesi_id, k.tweet_id FROM `komentet` as k WHERE k.tweet_id = $tweetId;";
+        $statement = $connection->query($query);
+        $comments = $statement->fetchAll();
+        return $comments;
+    }
+
+    public function insertComment(int $tweetId,string $content,int $commenterId): void{
+         try {
+            $query = "INSERT INTO interaksionet (tweet_id, krijuar_me, perdoruesi_id, lloji_interaksionit) VALUES ( :tweet_id, :krijuar_me, :perdoruesi_id, :lloji_interaksionit)";
+            $statement = $this->dbConnection->prepare($query);
+
+            // Bind parameters
+            $dateTime = new DateTime();
+         $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            $statement->bindParam('::tweet_id', $tweetId, PDO::PARAM_INT);
+            $statement->bindParam(':krijuar_me', $formattedDateTime, PDO::PARAM_STR);
+            $statement->bindParam(':perdoruesi_id', $commenterId, PDO::PARAM_STR);
+            $llojiInterksionit = "2";
+            $statement->bindParam(':lloji_interaksionit',$llojiInterksionit , PDO::PARAM_STR);
+
+            // Execute the query
+            $statement->execute();
+
+            // Close the statement
+            $statement->closeCursor();
+        } catch (PDOException $e) {
+            // Handle any exceptions here, e.g., log the error or display a user-friendly message
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function insertCommentHelper(string $commentContent, int $commenterId, int $tweetId): void
+    {
+        try {
+            $query = "INSERT INTO komentet (interaksioni_id, tweet_id, perdoruesi_id, teksti_komentit) VALUES (:interaksioni_id :tweet_id, :perdoruesi_id, :teksti_komentit)";
+            $statement = $this->dbConnection->prepare($query);
+
+            $interaksioni_id = $this->dbConnection->lastInsertId();
+
+            $statement->bindParam(":interaksioni_id", $interaksioni_id);
+            $statement->bindParam(':tweet_id', $tweetId, PDO::PARAM_INT);
+            $statement->bindParam(':perdoruesi_id', $commenterId, PDO::PARAM_STR);
+            $statement->bindParam(':teksti_komentit', $commentContent, PDO::PARAM_STR);
+
+            // Execute the query
+            $statement->execute();
+
+            // Close the statement
+            $statement->closeCursor();
+        } catch (PDOException $e) {
+            // Handle any exceptions here, e.g., log the error or display a user-friendly message
+            echo "Error: " . $e->getMessage();
+        }
+    }
+   
 }

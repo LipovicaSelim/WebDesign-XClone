@@ -57,7 +57,6 @@ $tweets = $tweetRep->getAllTweetsOfFollowed($activeUserId);
         <div class="feed-ctn">
             <?php foreach ($tweets as $tweet) { ?>
                 <div class="feed-post" data-tweet_id="<?php echo $tweet['tweet_id'] ?>">
-
                     <div class="feed-profile-ctn">
                         <img class="profile-pic" src=<?php echo ($acRepo->getProfilePicture($tweet["perdoruesi_id"])[0]) ?>
                             alt="default profile pic" style='border-radius: 50%'>
@@ -77,7 +76,7 @@ $tweets = $tweetRep->getAllTweetsOfFollowed($activeUserId);
                                     </span>
                                 </div>
                                 <div>
-                                    <img class="three-dots-op" src="images/threedots.svg" alt="options">
+                                    <a href='tweet.php?id=<?php echo($tweet["tweet_id"] . "&activeUserId=" . $activeUserId ) ?>'><img class="three-dots-op" src="images/threedots.svg" alt="options"></a>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +94,7 @@ $tweets = $tweetRep->getAllTweetsOfFollowed($activeUserId);
                         <div class="post-interaction-ctn">
                             <div class="comment-post">
                                 <div class="comment-post-ctn">
-                                    <img src="images/comment.svg" alt="comment" width="20px">
+                                    <a href='tweet.php?id=<?php echo($tweet["tweet_id"] . "&activeUserId=" . $activeUserId ) ?>'><img src="images/comment.svg" alt="comment" width="20px"></a>
                                 </div>
                                 <span></span>
                             </div>
