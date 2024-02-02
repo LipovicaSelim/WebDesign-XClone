@@ -1044,10 +1044,20 @@ input::-webkit-inner-spin-button {
   .nextStepToSignUpDiv {
     width: 85%;
   }
+
+  .passwordErrorMessage {
+    z-index: 1 !important;
+    bottom: 7% !important;
+  }
 }
 
 @media only screen and (max-width: 376px) {
   body {
     height: 100%;
+  }
+
+  .passwordErrorMessage {
+    z-index: 1 !important;
+    bottom: 7% !important;
   }
 }
