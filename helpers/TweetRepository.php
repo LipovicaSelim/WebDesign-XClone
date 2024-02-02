@@ -13,9 +13,10 @@ class TweetRepository
     }
 
 
-    
-    public function getTweetById(int $tweetId): array {
-        $connection  = $this->dbConnection;
+
+    public function getTweetById(int $tweetId): array
+    {
+        $connection = $this->dbConnection;
         $query = "SELECT * FROM tweets WHERE tweet_id = $tweetId";
         $statement = $connection->query($query);
 
@@ -23,15 +24,16 @@ class TweetRepository
         return $tweet;
     }
 
-    public function getTweetFieldById(int $tweetId, string $field) {
-            $tweetFields = self::getTweetById($tweetId);
-            return $tweetFields[0][$field];
-        }
+    public function getTweetFieldById(int $tweetId, string $field)
+    {
+        $tweetFields = self::getTweetById($tweetId);
+        return $tweetFields[0][$field];
+    }
 
 
     public function getAllTweetsByUserId(int $userId): array
     {
-        $connection  = $this->dbConnection;
+        $connection = $this->dbConnection;
 
         $query = "SELECT * FROM TWEETS WHERE perdoruesi_id = $userId ORDER BY  krijuar_me DESC";
         $statement = $connection->query($query);
@@ -42,13 +44,13 @@ class TweetRepository
 
     public function getAllTweetsOfFollowed(int $userId): array
     {
-        $connection  = $this->dbConnection;
+        $connection = $this->dbConnection;
         $query = "SELECT ndjeket.ndjek_id, tweets.tweet_id, tweets.perdoruesi_id, tweets.krijuar_me, tweets.tweet_body
                   FROM ndjeket
                   inner JOIN tweets ON ndjeket.ndjek_id = tweets.perdoruesi_id
                   where ndjeket.ndjekesi_id = $userId  
                   ORDER BY `tweets`.`krijuar_me` DESC
-                  LIMIT 20
+                  LIMIT 10
                   ";
 
         $statement = $connection->query($query);
@@ -58,7 +60,7 @@ class TweetRepository
 
     public function getImagesForTweet(int $tweetId): array
     {
-        $connection  = $this->dbConnection;
+        $connection = $this->dbConnection;
         $query = "SELECT tweet_media.tweet_img_url FROM `tweet_media` WHERE tweet_id = $tweetId;";
         $statement = $connection->query($query);
         $tweets = $statement->fetchAll();
@@ -67,7 +69,7 @@ class TweetRepository
 
     public function getLikesForTweet(int $tweetId): int
     {
-        $connection  = $this->dbConnection;
+        $connection = $this->dbConnection;
         $query = "SELECT COUNT(*) as like_count FROM interaksionet WHERE tweet_id = :tweetId AND lloji_interaksionit = 1";
         $statement = $this->dbConnection->prepare($query);
 
@@ -84,7 +86,7 @@ class TweetRepository
         $statement->closeCursor();
 
         // Return the like count
-        return (int)$result['like_count'];
+        return (int) $result['like_count'];
     }
 
 
@@ -136,27 +138,29 @@ class TweetRepository
         }
     }
 
-    public function getCommentsForPost(int $tweetId) : array {
-        $connection  = $this->dbConnection;
+    public function getCommentsForPost(int $tweetId): array
+    {
+        $connection = $this->dbConnection;
         $query = "SELECT k.teksti_komentit, k.komentuesi_id, k.tweet_id FROM `komentet` as k WHERE k.tweet_id = $tweetId;";
         $statement = $connection->query($query);
         $comments = $statement->fetchAll();
         return $comments;
     }
 
-    public function insertComment(int $tweetId,string $content,int $commenterId): void{
-         try {
+    public function insertComment(int $tweetId, string $content, int $commenterId): void
+    {
+        try {
             $query = "INSERT INTO interaksionet (tweet_id, krijuar_me, perdoruesi_id, lloji_interaksionit) VALUES ( :tweet_id, :krijuar_me, :perdoruesi_id, :lloji_interaksionit)";
             $statement = $this->dbConnection->prepare($query);
 
             // Bind parameters
             $dateTime = new DateTime();
-         $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
             $statement->bindParam('::tweet_id', $tweetId, PDO::PARAM_INT);
             $statement->bindParam(':krijuar_me', $formattedDateTime, PDO::PARAM_STR);
             $statement->bindParam(':perdoruesi_id', $commenterId, PDO::PARAM_STR);
             $llojiInterksionit = "2";
-            $statement->bindParam(':lloji_interaksionit',$llojiInterksionit , PDO::PARAM_STR);
+            $statement->bindParam(':lloji_interaksionit', $llojiInterksionit, PDO::PARAM_STR);
 
             // Execute the query
             $statement->execute();
@@ -168,7 +172,6 @@ class TweetRepository
             echo "Error: " . $e->getMessage();
         }
     }
-
     public function insertCommentHelper(string $commentContent, int $commenterId, int $tweetId): void
     {
         try {
@@ -188,9 +191,26 @@ class TweetRepository
             // Close the statement
             $statement->closeCursor();
         } catch (PDOException $e) {
-            // Handle any exceptions here, e.g., log the error or display a user-friendly message
             echo "Error: " . $e->getMessage();
         }
     }
-   
+
+    public function getTopUsersWithMostTweets(int $limit): array
+    {
+        $connection = $this->dbConnection;
+
+        $query = "SELECT p.perdoruesi_id, p.pseudonimi, COUNT(t.perdoruesi_id) AS tweet_count
+        FROM perdoruesit p
+        LEFT JOIN tweets t ON p.perdoruesi_id = t.perdoruesi_id
+        GROUP BY p.perdoruesi_id, p.pseudonimi
+        ORDER BY tweet_count DESC
+        LIMIT :limit";
+
+        $statement = $connection->prepare($query);
+        $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+    }
 }

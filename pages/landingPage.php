@@ -608,7 +608,7 @@ require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php';
                 </div>
               </div>
             </div>
-            <div id="passwordErrorMessage" style="
+            <div class="passwordErrorMessage" id="passwordErrorMessage" style="
                   position: absolute;
                   bottom: -100px;
                   left: calc(50% - 110px);

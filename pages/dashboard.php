@@ -5,7 +5,7 @@ include_once("../helpers/TweetRepository.php");
 $acRepo = new AccountRepository();
 $twRepo = new TweetRepository();
 $accounts = $acRepo->getAllAccounts();
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,23 +23,23 @@ $accounts = $acRepo->getAllAccounts();
 
         <div class="menu-nav-links">
             <div class="nav-link"> <img src="../pages/images/user-large-dashboard.svg" alt="user-large" width='25px'>
-                <span class='nav-link-span'> Dashboard</span>
+                <!-- <span class='nav-link-span'> Dashboard</span> -->
             </div>
             <div class="nav-link">
                 <img src="../pages/images/diagram-project-dashboard.svg" alt="diagram" width="25px">
-                <span class='nav-link-span'>Tweet tracker</span>
+                <!-- <span class='nav-link-span'>Tweet tracker</span> -->
             </div>
             <div class="nav-link">
                 <img src="../pages/images/followers-dashboard.svg" alt="followers icon" width="25px">
-                <span class='nav-link-span'>Followers</span>
+                <!-- <span class='nav-link-span'>Followers</span> -->
             </div>
             <div class="nav-link">
                 <img src="../pages/images/calendar-day-dashboard.svg" alt="calendar icon" width="25px">
-                <span class='nav-link-span'>Tweets schedule</span>
+                <!-- <span class='nav-link-span'>Tweets schedule</span> -->
             </div>
             <div class="nav-link">
                 <img src="../pages/images/chart-line-dashboard.svg" alt="chartline icon" width='25px'>
-                <span class='nav-link-span'>Tweet analytics</span>
+                <!-- <span class='nav-link-span'>Tweet analytics</span> -->
             </div>
         </div>
     </div>
@@ -82,29 +82,37 @@ $accounts = $acRepo->getAllAccounts();
                         <?php include_once("chart.php"); ?>
                     </div>
                 </div>
-                <div class="anonuncements-ctn">
-                    <?php foreach( $accounts as $account ) { ?>
-                        <a href='edit.php?id=<?php echo($account["perdoruesi_id"]) ?>'>
-                        <div class="user-cnt">
-                        <div class="username">
-                        <?php echo($account["perdoruesi_id"]." ".$account["pseudonimi"]) ?>
-                        </div>
-                        <div class="tweetCount">
-                            <?php echo($acRepo->getTweetCount($account["perdoruesi_id"])) ?>
-                        </div>
-                        <div class="createdAt">
-                            <?php echo($account["krijuar_me"])?>
-                        </div>
-                        <div class="interaksionet">
-                         <?php echo($acRepo->getInteractionsCount($account["perdoruesi_id"])) ?>
-                        </div>
-                        <div class="edit-user-ctn">
-                            <img id="closeButton" src="images/closeButton.svg" alt="edit button">
-                        </div>
-                    </div>
-                    </a>
-                    <?php } ?>
+
+            </div>
+            <div class="anonuncements-ctn">
+                <div class="announcement-first-row">
+                    <span>ID</span>
+                    <span>Username</span>
+                    <span>Tweet count</span>
+                    <span>created at</span>
+                    <span>Engagement Count</span>
                 </div>
+                <?php foreach ($accounts as $account) { ?>
+                    <a href='edit.php?id=<?php echo ($account["perdoruesi_id"]) ?>'>
+                        <div class="user-cnt">
+                            <div class="username">
+                                <?php echo ($account["perdoruesi_id"] . " " . $account["pseudonimi"]) ?>
+                            </div>
+                            <div class="tweetCount">
+                                <?php echo ($acRepo->getTweetCount($account["perdoruesi_id"])) ?>
+                            </div>
+                            <div class="createdAt">
+                                <?php echo ($account["krijuar_me"]) ?>
+                            </div>
+                            <div class="interaksionet">
+                                <?php echo ($acRepo->getInteractionsCount($account["perdoruesi_id"])) ?>
+                            </div>
+                            <div class="edit-user-ctn">
+                                <img id="closeButton" src="images/closeButton.svg" alt="edit button">
+                            </div>
+                        </div>
+                    </a>
+                <?php } ?>
             </div>
         </div>
     </section>
@@ -140,4 +148,5 @@ $accounts = $acRepo->getAllAccounts();
             console.error('Error fetching total users count:', error);
         });
 </script>
+
 </html>
