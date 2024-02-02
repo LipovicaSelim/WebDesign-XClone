@@ -74,6 +74,10 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: grey;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
 }
 
 .nav-sidebar > div > a {
@@ -747,6 +751,18 @@ backdrop-filter: blur(8.6px);
 
   .picture-post-ctn {
     margin-top: 4px;
+  }
+
+  .picture-post {
+    max-width: 97%;
+  }
+
+  .feed-post {
+    gap: 0;
+  }
+
+  .feed-username-options {
+    width: 98%;
   }
 
   /* .feed-mode-ctn {

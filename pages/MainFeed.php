@@ -19,12 +19,14 @@ $tweets = $tweetRep->getAllTweetsOfFollowed($activeUserId);
         </div>
         <div class="post-modal-ctn">
             <div class="prof-pic-ctn">
-                <a href="./profile.html"><img class="profile-pic" src=<?php echo ($acRepo->getProfilePicture($activeUserId)[0]) ?> alt="default profile pic" style="border-radius:50%"></a>
+                <a href="./profile.php"><img class="profile-pic" src=<?php echo ($acRepo->getProfilePicture($activeUserId)[0]) ?> alt="default profile pic"
+                        style="border-radius:50%"></a>
             </div>
             <div class="post-interact-ctn">
                 <div class="input-tweet-ctn">
                     <form action="../controllers/new-tweet.php" method="post" id="tweet-input-form">
-                        <input contenteditable type="text-area" name="tweet-new" id="tweet" placeholder="What is happening?! " required>
+                        <input contenteditable type="text-area" name="tweet-new" id="tweet"
+                            placeholder="What is happening?! " required>
                         <div class="right-type">
                             <button type="submit" class="post-btn post-btn-feed" id="post-new-tweet">Post</button>
                         </div>
@@ -55,31 +57,40 @@ $tweets = $tweetRep->getAllTweetsOfFollowed($activeUserId);
         <div class="feed-ctn">
             <?php foreach ($tweets as $tweet) { ?>
                 <div class="feed-post" data-tweet_id="<?php echo $tweet['tweet_id'] ?>">
-                
+
                     <div class="feed-profile-ctn">
-                        <img class="profile-pic" src=<?php echo($acRepo->getProfilePicture($tweet["perdoruesi_id"])[0])?> alt="default profile pic">
+                        <img class="profile-pic" src=<?php echo ($acRepo->getProfilePicture($tweet["perdoruesi_id"])[0]) ?>
+                            alt="default profile pic" style='border-radius: 50%'>
                     </div>
                     <div class="feed-post-content">
                         <div class="feed-username-options">
                             <div class="username-name">
                                 <div>
-                                    <span><?php echo ($acRepo->getAccountFieldById($tweet["ndjek_id"], "emri")) ?></span>
-                                    <span class="profile-card-username username-feed"><?php echo ("@" . $acRepo->getAccountFieldById($tweet["ndjek_id"], "pseudonimi")) ?></span>
-                                    <span class="profile-card-username"> <?php echo ("~" . $tweet["krijuar_me"]) ?></span>
+                                    <span>
+                                        <?php echo ($acRepo->getAccountFieldById($tweet["ndjek_id"], "emri")) ?>
+                                    </span>
+                                    <span class="profile-card-username username-feed">
+                                        <?php echo ("@" . $acRepo->getAccountFieldById($tweet["ndjek_id"], "pseudonimi")) ?>
+                                    </span>
+                                    <span class="profile-card-username">
+                                        <?php echo ("~" . $tweet["krijuar_me"]) ?>
+                                    </span>
                                 </div>
                                 <div>
                                     <img class="three-dots-op" src="images/threedots.svg" alt="options">
                                 </div>
                             </div>
                         </div>
-                        <div class="post-text-dsc-ctn"><?php echo $tweet["tweet_body"] ?></div>
+                        <div class="post-text-dsc-ctn">
+                            <?php echo $tweet["tweet_body"] ?>
+                        </div>
                         <?php $tweetMedias = $tweetRep->getImagesForTweet($tweet["tweet_id"]);
                         if (count($tweetMedias) > 0) {
                             foreach ($tweetMedias as $tweetMedia) { ?>
                                 <div class="picture-post-ctn">
                                     <img class="picture-post" src=<?php echo ($tweetMedia[0]) ?> alt="post pic example">
                                 </div>
-                        <?php }
+                            <?php }
                         } ?>
                         <div class="post-interaction-ctn">
                             <div class="comment-post">
@@ -95,9 +106,12 @@ $tweets = $tweetRep->getAllTweetsOfFollowed($activeUserId);
                             </div>
                             <div class="like-post">
                                 <div class="like-post-ctn">
-                                    <img id="like-button-<?php echo $tweet["tweet_id"]; ?>" src="images/like.svg" alt="like" width="20px">
+                                    <img id="like-button-<?php echo $tweet["tweet_id"]; ?>" src="images/like.svg" alt="like"
+                                        width="20px">
                                 </div>
-                                <span><?php echo ($tweetRep->getLikesForTweet($tweet["tweet_id"])) ?></span>
+                                <span>
+                                    <?php echo ($tweetRep->getLikesForTweet($tweet["tweet_id"])) ?>
+                                </span>
                             </div>
                             <div class="views-post">
                                 <div class="views-post-ctn">
@@ -105,7 +119,8 @@ $tweets = $tweetRep->getAllTweetsOfFollowed($activeUserId);
                                 </div>
                             </div>
                             <div class="bmk-share-ctn">
-                                <div class="bookmark-post"><img src="images/bookmark.svg" alt="bookmarks" width="20px"></div>
+                                <div class="bookmark-post"><img src="images/bookmark.svg" alt="bookmarks" width="20px">
+                                </div>
                                 <div class="shr"><img src="images/share.svg" alt="share"></div>
                             </div>
                         </div>
@@ -126,7 +141,8 @@ $tweets = $tweetRep->getAllTweetsOfFollowed($activeUserId);
                 <h2 class="sub-header">Subscribe to Premium</h2>
             </div>
             <div>
-                <h5 class="sub-pgf">Subscribe to unlock new features and if eligible, receive a share of ads revenue.</h5>
+                <h5 class="sub-pgf">Subscribe to unlock new features and if eligible, receive a share of ads revenue.
+                </h5>
             </div>
             <input type="button" class="post-btn sub-btn" value="Subscribe">
         </div>

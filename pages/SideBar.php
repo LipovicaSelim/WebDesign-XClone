@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 include_once("../helpers/AccountRepository.php");
+// session_start();
 
-$activeSessionUser = 1;
+$activeSessionUser = $_SESSION['user_id'];
 
 $acRepo = new AccountRepository();
 ?>
@@ -12,12 +13,14 @@ $acRepo = new AccountRepository();
         <div class="sidebar-flex-container">
             <div class="side-nav-bar-ctn">
                 <div class="home-logo">
-                    <a href="./home.html"><img class="home-icon" src="./images/dXsLogo.svg" width="150px" alt="LOGO" style="object-fit: contain;"></a>
+                    <a href="./homeView.php"><img class="home-icon" src="./images/dXsLogo.svg" width="150px" alt="LOGO"
+                            style="object-fit: contain;"></a>
                 </div>
                 <div class="nav-sidebar-ctn">
                     <nav class="nav-sidebar">
                         <div class="nav-elem-ctn">
-                            <a href="./home.html" class="side-nav-row"><img src="images/home.svg" alt="home"><span class="home-nav nav-text">Home</span></a>
+                            <a href="./homeView.php" class="side-nav-row"><img src="images/home.svg" alt="home"><span
+                                    class="home-nav nav-text">Home</span></a>
                         </div>
                         <div class="nav-elem-ctn">
                             <a href="" class="side-nav-row"><img src="images/search.svg" alt="explore">
@@ -25,19 +28,24 @@ $acRepo = new AccountRepository();
                             </a>
                         </div>
                         <div class="nav-elem-ctn">
-                            <a href="" class="side-nav-row"><img src="images/notifications.svg" alt="notifications"><span class="nav-text">Notifications</span></a>
+                            <a href="" class="side-nav-row"><img src="images/notifications.svg"
+                                    alt="notifications"><span class="nav-text">Notifications</span></a>
                         </div>
                         <div class="nav-elem-ctn">
-                            <a href="" class="side-nav-row"><img src="images/messages.svg" alt="messages"><span class="nav-text">Messages</span></a>
+                            <a href="" class="side-nav-row"><img src="images/messages.svg" alt="messages"><span
+                                    class="nav-text">Messages</span></a>
                         </div>
                         <div class="nav-elem-ctn">
-                            <a href="" class="side-nav-row"><img src="images/litsts.svg" alt="lists"><span class="nav-text">Lists</span></a>
+                            <a href="" class="side-nav-row"><img src="images/litsts.svg" alt="lists"><span
+                                    class="nav-text">Lists</span></a>
                         </div>
                         <div class="nav-elem-ctn">
-                            <a href="" class="side-nav-row"><img src="images/bookmarks.svg" alt="bookmarks"><span class="nav-text">Bookmarks</span></a>
+                            <a href="" class="side-nav-row"><img src="images/bookmarks.svg" alt="bookmarks"><span
+                                    class="nav-text">Bookmarks</span></a>
                         </div>
                         <div class="nav-elem-ctn">
-                            <a href="./profile.html" class="side-nav-row"><img src="images/profile.svg" alt="profile"><span class="nav-text">Profile</span></a>
+                            <a href="./profile.php" class="side-nav-row"><img src="images/profile.svg"
+                                    alt="profile"><span class="nav-text">Profile</span></a>
                         </div>
                         <div class="nav-elem-ctn">
                             <input class="post-btn" id="sidebar-post-btn" type="button" value="Post">
@@ -52,15 +60,21 @@ $acRepo = new AccountRepository();
                         <img class="profile-pic" src="images/defaultProfile1.svg" alt="default profile pic">
                     </div>
                     <div class="name-usrn-ctn">
-                        <span class="profile-card-nickname"><?php echo ($acRepo->getAccountFieldById($activeSessionUser, "emri")) ?></span>
-                        <div class="profile-card-username"><?php echo ("@" . $acRepo->getAccountFieldById($activeSessionUser, "pseudonimi")) ?></div>
+                        <span class="profile-card-nickname">
+                            <?php echo ($acRepo->getAccountFieldById($activeSessionUser, "emri")) ?>
+                        </span>
+                        <div class="profile-card-username">
+                            <?php echo ("@" . $acRepo->getAccountFieldById($activeSessionUser, "pseudonimi")) ?>
+                        </div>
                     </div>
                 </div>
                 <div class="profile-card-options">
-                    <img src="images/threedots.svg" alt="options">
+                    <img id="logout-btn" src="images/threedots.svg" alt="options">
                 </div>
             </div>
         </div>
 
     </div>
 </div>
+
+<script type="text/javascript" src="logout.js"></script>

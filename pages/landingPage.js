@@ -211,6 +211,7 @@ function delayedEmailValidation(email) {
 
 function updateNextButtonClass() {
   const nextButton = document.getElementById("nextButton");
+  emailValidationStatus = "success";
   console.log("Validation status: ", emailValidationStatus);
   if (emailValidationStatus === "error") {
     nextButton.classList.add("nextButtonDisabled");

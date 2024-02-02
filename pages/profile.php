@@ -1,3 +1,7 @@
+<?php
+include '../controllers/protected.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,12 +11,14 @@
     <title>DxS</title>
     <link rel="stylesheet" href="../style/profile.css">
 </head>
+
 <body>
     <div class="screen-ctn">
-        <?php include_once("SideBar.php"); ?>
+        <?php include("SideBar.php"); ?>
         <?php include_once("profileMainContent.php"); ?>
-        <?php include_once("rightSideBar.php"); ?>    
+        <?php include_once("rightSideBar.php"); ?>
     </div>
 </body>
 <script src="./home.js"></script>
+
 </html>

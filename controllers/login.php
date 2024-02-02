@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 include "../helpers/DbConnection.php";
-include "../pages/homeView.php";
+// include "../pages/homeView.php";
 session_start();
 
 //me bo redirect back ne homeView nese useri nuk bon log out amo munohet me qas landingPage

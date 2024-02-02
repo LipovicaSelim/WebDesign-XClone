@@ -60,7 +60,7 @@ include '../controllers/protected.php'
                                     <img src="../pages/images/followers-dashboard.svg" alt="check" width="70px">
                                 </div>
                                 <span class="engagment-header">Total users</span>
-                                <span class="engagment-header" style="font-size:1.5rem">23</span>
+                                <span id="totalUsersCount" class="engagment-header" style="font-size:1.5rem">23</span>
                             </div>
                         </div>
                         <div class="tweets-count-ctn">
@@ -69,7 +69,7 @@ include '../controllers/protected.php'
                                     <img src="../pages/images/icons8-twitter-dashboard.svg" alt="check" width="70px">
                                 </div>
                                 <span class="engagment-header">Total tweets</span>
-                                <span class="engagment-header" style="font-size:1.5rem">312</span>
+                                <span id="totalTweetsCount" class="engagment-header" style="font-size:1.5rem">312</span>
                             </div>
                         </div>
                     </div>
@@ -82,5 +82,36 @@ include '../controllers/protected.php'
         </div>
     </section>
 </body>
+
+<script>
+    fetch("../controllers/totalUsersCount.php")
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('totalUsersCount').textContent = data.total_users;
+                console.log(data);
+            } else {
+                console.error('Failed to fetch total users count');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching total users count:', error);
+        });
+</script>
+<script>
+    fetch("../controllers/totalTweetsCount.php")
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('totalTweetsCount').textContent = data.total_tweets;
+                console.log(data);
+            } else {
+                console.error('Failed to fetch total tweets count');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching total users count:', error);
+        });
+</script>
 
 </html>

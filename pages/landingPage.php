@@ -1,6 +1,6 @@
-<!-- <?php
-      require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php';
-      ?> -->
+<?php
+require_once '../vendor/PHPMailer-6.9.1/src/PHPMailer.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +76,8 @@
                   </div>
 
                   <div class="inputBox emailInputBox" id="NameInputBox">
-                    <input type="email" id="email" name="email" required="required" oninput="delayedEmailValidation(this.value)" />
+                    <input type="email" id="email" name="email" required="required"
+                      oninput="delayedEmailValidation(this.value)" />
                     <span>Email</span>
                     <div id="email-regex-error"></div>
                   </div>
@@ -353,20 +354,23 @@
                       <input type="text" id="confirmedUsername" name="confirmedUserName" maxlength="50" />
                       <span>Name</span>
                       <!-- <div id="name-regex-error"></div> -->
-                      <img src="images/confirmedInputsCheck.svg" alt="checked" width="18px" style="padding-right: 6px; padding-top: 13px" />
+                      <img src="images/confirmedInputsCheck.svg" alt="checked" width="18px"
+                        style="padding-right: 6px; padding-top: 13px" />
                     </div>
                     <div class="inputBox confirmedEmailInputBox" id="confirmedEmailInputBox">
                       <input type="confirmedEmail" id="confirmedEmail" name="confirmedEmail" />
                       <span>Email</span>
                       <!-- <div id="email-regex-error"></div> -->
-                      <img src="images/confirmedInputsCheck.svg" alt="checked" width="18px" style="padding-right: 6px; padding-top: 13px" />
+                      <img src="images/confirmedInputsCheck.svg" alt="checked" width="18px"
+                        style="padding-right: 6px; padding-top: 13px" />
                     </div>
                     <div id="confirmedBirthdateInputBox" class="inputBox">
                       <!-- <div id="birthdate" class="NameRegex"></div> -->
                       <input type="text" id="confirmedBirthdate" name="confirmedBirthdate" />
                       <span>Date of birth</span>
                       <!-- <div id="name-regex-error"></div> -->
-                      <img src="images/confirmedInputsCheck.svg" alt="checked" width="18px" style="padding-right: 6px; padding-top: 13px" />
+                      <img src="images/confirmedInputsCheck.svg" alt="checked" width="18px"
+                        style="padding-right: 6px; padding-top: 13px" />
                     </div>
                     <div class="step3SpanButton">
                       <p class="step3AgreeTerms">
@@ -382,7 +386,8 @@
                         <em>here</em>.
                       </p>
                       <div>
-                        <button id="sendVerificationCode" class="nextStepToSignUp" onclick="handleClick()">
+                        <button id="sendVerificationCode" class="nextStepToSignUp" onclick="handleClick()"
+                          style="font-size: 20px;border-radius: 30px;height: 50px;width: 100%;color: black; font-weight: 700; cursor:pointer">
                           Sign Up
                         </button>
                       </div>
@@ -453,7 +458,8 @@
                       <div class="verificationCodeInput">
                         <div id="verificationCodeInput" class="inputBox" style="margin-bottom: 7px; margin-top: 7px">
                           <div id="verificationCodeDisplay" class="verificationCode"></div>
-                          <input type="number" id="verificationCode" name="verificationCode" required="required" maxlength="6" />
+                          <input type="number" id="verificationCode" name="verificationCode" required="required"
+                            maxlength="6" />
                           <span>Verification code</span>
                         </div>
                         <div>
@@ -504,9 +510,12 @@
                       <div class="verificationCodeInput">
                         <div id="passwordInputBox" class="inputBox" style="margin-bottom: 7px; margin-top: 7px">
                           <div id="passwordInput" class="passwodInput"></div>
-                          <input class="password" type="password" id="password" name="password" required="required" maxlength="50" />
+                          <input class="password" type="password" id="password" name="password" required="required"
+                            maxlength="50" />
                           <span>Password</span>
-                          <img src="images/displayPassword.svg" alt="display" width="22px" style="padding-right: 10px; padding-top: 25px" id="displayPassword" onclick="togglePasswordVisibility()" />
+                          <img src="images/displayPassword.svg" alt="display" width="22px"
+                            style="padding-right: 10px; padding-top: 25px" id="displayPassword"
+                            onclick="togglePasswordVisibility()" />
                         </div>
                         <p id="passwordError" style="
                               color: #bd1919;
@@ -563,14 +572,18 @@
                   </div>
                   <div id="signin-name-input" class="inputBox" style="margin-top: 0; margin-bottom: 22px">
                     <div id="nameRegex" class="NameRegex"></div>
-                    <input type="email" id="signIn-username" required="required" maxlength="50" name="usernameOrEmail" />
+                    <input type="email" id="signIn-username" required="required" maxlength="50"
+                      name="usernameOrEmail" />
                     <span>Email or username</span>
                     <!-- <div id="name-regex-error"></div> -->
                   </div>
                   <div id="signin-password" class="inputBox" style="margin-top: 2px; margin-bottom: 12px">
-                    <input type="password" id="signin-password-input" name="password" required="required" maxlength="60" placeholder="Password" />
+                    <input type="password" id="signin-password-input" name="password" required="required" maxlength="60"
+                      placeholder="Password" />
                     <span></span>
-                    <img src="images/displayPassword.svg" alt="display" width="22px" style="padding-right: 10px; padding-top: 25px" id="displayPassword" onclick="toggleSignInPasswordVisibility()" />
+                    <img src="images/displayPassword.svg" alt="display" width="22px"
+                      style="padding-right: 10px; padding-top: 25px" id="displayPassword"
+                      onclick="toggleSignInPasswordVisibility()" />
                   </div>
                   <div id="signInNextButton">
                     <button id="signInnextButton" class="signInBtn">
@@ -595,7 +608,7 @@
                 </div>
               </div>
             </div>
-            <div id=" passwordErrorMessage" style="
+            <div id="passwordErrorMessage" style="
                   position: absolute;
                   bottom: -100px;
                   left: calc(50% - 110px);

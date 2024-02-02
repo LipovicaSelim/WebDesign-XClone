@@ -16,6 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $verificationCode = $_POST["code"];
     $email = $_POST["email"];
 
+    error_log("Email received: " . $email);
+
     $dbConnection = new DbConnection();
     $pdo = $dbConnection->dbConnect();
 
