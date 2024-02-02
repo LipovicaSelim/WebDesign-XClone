@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         })
         .catch((error) => {
+          console.log("**********data", data);
           console.error("Error from .catch", error);
         });
     });

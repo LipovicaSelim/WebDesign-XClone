@@ -932,6 +932,20 @@ input::-webkit-inner-spin-button {
   margin-top: 15px;
 }
 
+#sendVerificationCode {
+  font-size: 20px;
+  border-radius: 30px;
+  height: 50px;
+  width: 100%;
+  color: black;
+  font-weight: 700;
+}
+
+#sendVerificationCode:hover {
+  background-color: rgb(192, 186, 186);
+  transition: all 0.1s ease-in;
+}
+
 /* #passwordErrorMessage {
   transition: all;
   transition-duration: 0.5s;

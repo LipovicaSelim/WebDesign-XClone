@@ -1,6 +1,6 @@
 <?php
 include '../controllers/protected.php';
-session_start();
+// session_start();
 $getTweetsFromAccountsFollow = "SELECT tweets.tweet_id, Tweets.perdoruesi_id, Tweets.tweet_body
  FROM perdoruesit JOIN ndjeket ON perdoruesit.perdoruesi_id = ndjeket.ndjekesi_id 
  JOIN Tweets ON ndjeket.ndjek_id = Tweets.perdoruesi_id 
@@ -28,7 +28,7 @@ $getTweetsFromAccountsFollow = "SELECT tweets.tweet_id, Tweets.perdoruesi_id, Tw
 
     <div class="screen-ctn">
         <!-- Include sidebar HTML -->
-        <?php include_once("SideBar.php"); ?>
+        <?php include("SideBar.php"); ?>
 
         <!-- Include main content HTML -->
         <?php include_once("MainFeed.php"); ?>

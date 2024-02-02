@@ -2,7 +2,8 @@ document
   .getElementById("sendVerificationCode")
   .addEventListener("click", function () {
     var verificationCode = Math.floor(100000 + Math.random() * 900000);
-    var email = "lipovicaselim@gmail.com"; // Replace with the actual email address
+    var email = userData.email;
+    console.log("Email from send verification code.js: ", email);
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "../controllers/sendVerificationEmail.php", true);
@@ -16,5 +17,5 @@ document
         }
       }
     };
-    xhr.send("code=" + verificationCode + "&email=" + email); // Pass verification code and email as parameters
+    xhr.send("code=" + verificationCode + "&email=" + email);
   });
