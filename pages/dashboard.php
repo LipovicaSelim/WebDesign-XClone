@@ -86,11 +86,11 @@ $accounts = $acRepo->getAllAccounts();
             </div>
             <div class="anonuncements-ctn">
                 <div class="announcement-first-row">
-                    <span>ID</span>
-                    <span>Username</span>
-                    <span>Tweet count</span>
-                    <span>created at</span>
-                    <span>Engagement Count</span>
+                    <span class="head">ID Username</span>
+                    <span class="head">Tweet count</span>
+                    <span class="head">created at</span>
+                    <span class="head">Engagement Count</span>
+                    <span>Manage User</span>
                 </div>
                 <?php foreach ($accounts as $account) { ?>
                     <a href='edit.php?id=<?php echo ($account["perdoruesi_id"]) ?>'>

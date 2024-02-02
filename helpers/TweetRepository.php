@@ -195,6 +195,33 @@ class TweetRepository
         }
     }
 
+    public function insertComment1(int $user_Id, int $tweet_Id, string $commentContent): void {
+    $pdo->beginTransaction();
+
+    $stmt = $pdo->prepare("INSERT INTO interaksionet (tweet_id, perdoruesi_id) VALUES (:tweet_id, :perdoruesi_id)");
+    $stmt->bindParam(':tweet_id', $tweet_id);
+    $stmt->bindParam(':perdoruesi_id', $user_id);
+    $stmt->execute();
+
+    // Retrieve the last inserted interaction_id
+    $interaction_id = $pdo->lastInsertId();
+
+    // Insert a new comment using the obtained interaction_id
+    $stmt = $pdo->prepare("INSERT INTO Comments (user_id, interaction_id, tweet_id, comment_content) VALUES (:user_id, :interaction_id, :tweet_id, :comment_content)");
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->bindParam(':interaction_id', $interaction_id);
+    $stmt->bindParam(':tweet_id', $tweet_id);
+    $stmt->bindParam(':comment_content', $comment_content);
+    $stmt->execute();
+
+    // Commit the transaction
+    $pdo->commit();
+        $pdo = null;
+}
+
+// Close the connection
+
+
     public function getTopUsersWithMostTweets(int $limit): array
     {
         $connection = $this->dbConnection;

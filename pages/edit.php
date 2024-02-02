@@ -7,9 +7,9 @@ $twRepo = new TweetRepository();
 $id = $_GET['id'];
 $account = $acRepo->getAccountById($id)[0];
 $tweets =  $twRepo->getAllTweetsByUserId($id);
-var_dump($account);
 ?>
 
+<h1>Manage Account</h1>
  <div class="anonuncements-ctn">
                         <a href='edit.php?id=<?php echo($account["perdoruesi_id"]) ?>'>
                         <div class="user-cnt">
@@ -26,11 +26,13 @@ var_dump($account);
                          <?php echo($acRepo->getInteractionsCount($account["perdoruesi_id"])) ?>
                         </div>
                         <div class="edit-user-ctn">
-                            <img id="closeButton" src="images/closeButton.svg" alt="edit button">
+                            <img id="deleteButton" src="images/delete.svg" alt="delete button" style="heigt:20px; width:20px;">
                         </div>
                     </div>
                     </a>
     </div>
+
+    <h2>Manage Tweets</h2>
 
     <div class="tweets-ctn">
         <?php foreach($tweets as $tweet){ ?>
@@ -41,14 +43,21 @@ var_dump($account);
         <div class="tweet-body">
             <?php echo($tweet["tweet_body"]) ?>
         </div>
-        <div class="tweet-media">
-            <?php echo($twRepo->getImagesForTweet($tweet["tweet_id"])) ?>
+        <div class="tweet-media"
+           <?php $tweetMedias = $twRepo->getImagesForTweet($tweet["tweet_id"]);
+                        if (count($tweetMedias) > 0) {
+                            foreach ($tweetMedias as $tweetMedia) { ?>
+                                <div class="picture-post-ctn">
+                                    <img class="picture-post" src=<?php echo ($tweetMedia[0]) ?> alt="post pic example">
+                                </div>
+                            <?php }
+                        } ?>
         </div>
         <div class="created-at">
             <?php echo($tweet["krijuar_me"]) ?>
         </div>
         <div class="delete-tweet">
-            <!-- me shtu buton qe e bon delete tweet -->
+            <img id="deleteButton" src="images/delete.svg" alt="delete button" style="heigt:20px; width:20px;">
         </div>
      </div>
      <?php } ?>

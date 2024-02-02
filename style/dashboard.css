@@ -236,3 +236,7 @@ a {
   background-color: rgb(118, 51, 51);
   transition: all 0.1s ease-in;
 }
+
+.head{
+  margin-left: 2.4rem;
+}
