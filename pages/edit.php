@@ -5,9 +5,16 @@ include_once("../helpers/TweetRepository.php");
 
 $acRepo = new AccountRepository();
 $twRepo = new TweetRepository();
+$pstId;
+if(isset($_GET["postId"])){
 $pstId = $_GET["postId"];
-$id = $_GET['id'];
+}
+if(isset($_GET["deleteAccount"])){
 $deleteAccount = $_GET["deleteAccount"];
+}
+
+
+$id = $_GET['id'];
 var_dump($id);
 $account = $acRepo->getAccountById($id)[0];
 $tweets = $twRepo->getAllTweetsByUserId($id);
@@ -22,7 +29,7 @@ if(isset($pstId)) {
 ?>
 
 <link rel="stylesheet" href="../style/edit.css">
-<a href="#" onclick="history.back();">
+<a href="dashboard.php">
     <img id="back-arrow" src="images/back-arrow-edit.svg" alt="backarrow">
 </a>
 <h1>Manage Account</h1>
