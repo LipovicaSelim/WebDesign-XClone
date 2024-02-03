@@ -167,7 +167,7 @@ h2 {
 
 #back-arrow {
   height: 50px;
-  position: absolute;
+  position: fixed;
   top: 30px;
   left: 50px;
   cursor: pointer;
