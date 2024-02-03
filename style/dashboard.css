@@ -120,10 +120,6 @@ body {
   margin-bottom: 50px;
 }
 
-.anonuncements-ctn:nth-child(odd) {
-  background-color: red;
-}
-
 ::-webkit-scrollbar {
   width: 20px;
 }
@@ -237,6 +233,6 @@ a {
   transition: all 0.1s ease-in;
 }
 
-.head{
+.head {
   margin-left: 2.4rem;
 }

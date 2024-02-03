@@ -294,4 +294,6 @@ try {
 </script>
 
 <!-- HTML -->
-<div id="chartdiv"></div>
+<div id="chartdiv">
+  <h1 style="color:white; text-align:center">Accounts with most tweets</h1>
+</div>
