@@ -39,6 +39,9 @@ if (isset($_POST['post-comment'])) {
 
 <body style="display:flex; justify-content:center; align-items:center;">
     <div class="tweet-container" style="min-width:600px; min-height: 600px; color:white">
+    <a href="homeView.php">
+    <img id="back-arrow" src="images/back-arrow-edit.svg" alt="backarrow" style="width:30px; height:30px;">
+    </a>
         <div class="feed-post" data-tweet_id="<?php echo $tweet['tweet_id'] ?>">
             <div class="feed-profile-ctn">
                 <img class="profile-pic" src=<?php echo ($acRepo->getProfilePicture($tweet["perdoruesi_id"])[0]) ?>
@@ -68,7 +71,7 @@ if (isset($_POST['post-comment'])) {
                     <?php echo $tweet["tweet_body"] ?>
                 </div>
                 <?php $tweetMedias = $twRepo->getImagesForTweet($tweet["tweet_id"]);
-                if (count($tweetMedias) > 0) {
+                if (isset($tweetMedias[0])) {
                     foreach ($tweetMedias as $tweetMedia) { ?>
                         <div class="picture-post-ctn">
                             <img class="picture-post" src=<?php echo ($tweetMedia[0]) ?> alt="post pic example">

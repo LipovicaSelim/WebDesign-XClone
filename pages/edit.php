@@ -5,15 +5,19 @@ include_once("../helpers/TweetRepository.php");
 
 $acRepo = new AccountRepository();
 $twRepo = new TweetRepository();
-
+$pstId = $_GET["postId"];
 $id = $_GET['id'];
+$deleteAccount = $_GET["deleteAccount"];
 var_dump($id);
 $account = $acRepo->getAccountById($id)[0];
 $tweets = $twRepo->getAllTweetsByUserId($id);
 
-if (isset($_POST["delete-cmt-btn"])) {
-    $twToDelete = $_POST['tweet_id'];
-    $twRepo->deleteTweetById($twToDelete);
+if(isset($deleteAccount)) {
+    $acRepo->deleteAccountById($id);
+}
+
+if(isset($pstId)) {
+    $twRepo->deleteTweetById($pstId);
 }
 ?>
 
@@ -46,8 +50,8 @@ if (isset($_POST["delete-cmt-btn"])) {
                         <?php echo ($acRepo->getInteractionsCount($account["perdoruesi_id"])) ?>
                     </div>
                     <div class="edit-user-ctn" style="display: flex; flex-direction: column;">
-                        <img id="deleteButton" src="images/edit-delete-red.svg" alt="delete button"
-                            style="height:20px; width:20px;">
+                        <a href=<?php echo("edit.php?id=$id&deleteAccount=true")?>> <img id="deleteButton" src="images/edit-delete-red.svg" alt="delete button"
+                            style="height:20px; width:20px;"></a>
                     </div>
                 </div>
             </div>
@@ -59,6 +63,7 @@ if (isset($_POST["delete-cmt-btn"])) {
 
 <div class="tweets-ctn">
     <?php foreach ($tweets as $tweet) { ?>
+        <?php $postId = $tweet["tweet_id"] ?>
         <div class="full-tweet">
             <div class="user-tweet">
                 <h1 class="tweet-id">
@@ -101,10 +106,9 @@ if (isset($_POST["delete-cmt-btn"])) {
                 </div>
             </div>
             <div class="delete-tweet">
-                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" id="myForm" method="POST">
-                    <input type="hidden" name="tweet_id" value="<?php var_dump($tweet["tweet_id"]) ?>">
-                    <input type="submit" name="delete-cmt-btn">
-                    <img id="deleteButton" src="images/edit-delete.svg" alt="delete button">
+                 <form action="<?php echo $SERVER['PHP_SELF']?>" method="post">
+                    <input type="hidden" name="tweet_id" value="<?php $string = $tweet["tweet_id"]; var_dump($tweet["tweet_id"]) ?>">
+                    <a href=<?php echo("edit.php?id=$id&postId=$postId") ?>><img id="deleteButton" src="images/edit-delete.svg" alt="delete button"></a>
                 </form>
             </div>
         </div>

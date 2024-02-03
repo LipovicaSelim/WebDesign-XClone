@@ -126,5 +126,11 @@ class AccountRepository {
                return $interksionet[0];
            }
 
+             public function deleteAccountById(int $accountId): void {
+             $query = "DELETE FROM perdoruesit where perdoruesi_id = $accountId";
+            $statement = $this->dbConnection->prepare($query);
+            $success = $statement->execute();
+            $statement->closeCursor();
+    }
 
 }

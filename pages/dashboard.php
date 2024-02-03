@@ -52,8 +52,9 @@ $accounts = $acRepo->getAllAccounts();
                     <img src="../pages/images/comment-dots-dashboard.svg" alt="comments icon" width="30px">
                     <img src="../pages/images/profile-default-dashboard.png" alt="profile img" width="50px"
                         style='border-radius:50%;'>
-                    <img src="../pages/images/angle-down-dashboard.svg" alt="dropdown icon" width="25px">
+                    <img src="../pages/images/logout.svg" id="logout-btn" alt="dropdown icon" width="25px">
                 </div>
+              
             </div>
 
             <div class="first-ctns">
@@ -148,5 +149,10 @@ $accounts = $acRepo->getAllAccounts();
             console.error('Error fetching total users count:', error);
         });
 </script>
+
+
+<script type="text/javascript" src="logout.js"></script>
+
+
 
 </html>

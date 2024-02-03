@@ -69,7 +69,7 @@ $acRepo = new AccountRepository();
                     </div>
                 </div>
                 <div class="profile-card-options">
-                    <img id="logout-btn" src="images/threedots.svg" alt="options">
+                    <img id="logout-btn" src="images/logout.svg" alt="options" style="width:20px;height:20px;">
                 </div>
             </div>
         </div>
