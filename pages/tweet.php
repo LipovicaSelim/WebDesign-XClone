@@ -38,6 +38,9 @@ if (isset($_POST['post-comment'])) {
 </head>
 
 <body style="display:flex; justify-content:center; align-items:center;">
+<a href="http://localhost:8008/WebDesign-XClone/pages/homeView.php" onclick="history.back();">
+    <img src="images/back-arrow-edit.svg" alt="backbutton" width="50px" class="backButton">
+</a>
     <div class="tweet-container" style="min-width:600px; min-height: 600px; color:white">
     <a href="homeView.php">
     <img id="back-arrow" src="images/back-arrow-edit.svg" alt="backarrow" style="width:30px; height:30px;">
@@ -114,6 +117,18 @@ if (isset($_POST['post-comment'])) {
         </div>
         <div class="comments-section" style="width:100%">
             <div class="comment-post" style="width:100%">
+                <div class="comments-ctn">
+                    <?php foreach($tweetComments as $tweetComment){ ?>
+                        <div class="comment-ctn">
+                            <div class="feed-profile-container">
+                                <img class="profile-pic" src=<?php echo ($acRepo->getProfilePicture((int) $tweetComment["komentuesi_id"])[0]) ?>
+                            </div>
+                            <div class="comment-content">
+                                <div style="color:white;"><?php echo($tweetComment["teksti_komentit"]) ?></div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
                 <div class="input-tweet-ctn" style="width:100%">
                     <div class="user-profile-pic">
                         <img class="profile-pic" src=<?php echo ($acRepo->getProfilePicture((int) $activeUserId)[0]) ?>
@@ -129,18 +144,6 @@ if (isset($_POST['post-comment'])) {
                                 style="width:100px">Comment</button>
                         </div>
                     </form>
-                </div>
-                <div class="comments-ctn">
-                    <?php foreach($tweetComments as $tweetComment){ ?>
-                        <div class="comment-ctn">
-                            <div class="feed-profile-ctn">
-                                <img class="profile-pic" src=<?php echo ($acRepo->getProfilePicture((int) $tweetComment["komentuesi_id"])[0]) ?>
-                            </div>
-                            <div class="comment-content">
-                                <div style="color:white;"><?php echo($tweetComment["teksti_komentit"]) ?></div>
-                            </div>
-                        </div>
-                    <?php } ?>
                 </div>
             </div>
         </div>
