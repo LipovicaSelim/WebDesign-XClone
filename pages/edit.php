@@ -2,39 +2,34 @@
 include '../controllers/protected.php';
 include_once("../helpers/AccountRepository.php");
 include_once("../helpers/TweetRepository.php");
+
 $acRepo = new AccountRepository();
 $twRepo = new TweetRepository();
+
 $id = $_GET['id'];
+var_dump($id);
 $account = $acRepo->getAccountById($id)[0];
 $tweets = $twRepo->getAllTweetsByUserId($id);
 
-             if (isset($_POST["delete-cmt-btn"])) {
-                 $twToDelete = $_POST['tweet_id'];
-                 $twRepo->deleteTweetById($twToDelete);
-             }
-            
-    
-            
-            
-
+if (isset($_POST["delete-cmt-btn"])) {
+    $twToDelete = $_POST['tweet_id'];
+    $twRepo->deleteTweetById($twToDelete);
+}
 ?>
 
-
-
 <link rel="stylesheet" href="../style/edit.css">
-<a href="#" onclick="history.back(); ;">
+<a href="#" onclick="history.back();">
     <img id="back-arrow" src="images/back-arrow-edit.svg" alt="backarrow">
 </a>
 <h1>Manage Account</h1>
+
 <div class="anonuncements-ctn">
     <a href='edit.php?id=<?php echo ($account["perdoruesi_id"]) ?>'>
         <div class="user-cnt">
-
             <div class="user-details">
                 <div class="username">
                     <img src='<?php echo $acRepo->getProfilePicture($account['perdoruesi_id'])[0] ?>' alt="profile img"
-                        style="width: 60px; border-radius: 50%">
-
+                        style="width: 60px; border-radius: 50%;">
                     <?php echo ($account["perdoruesi_id"] . " @" . $account["pseudonimi"]) ?>
                 </div>
                 <div class="bottom-details">
@@ -73,30 +68,88 @@ $tweets = $twRepo->getAllTweetsByUserId($id);
                 <div class="tweet-body">
                     <?php echo ($tweet["tweet_body"]) ?>
                 </div>
-                <div class="tweet-media" <?php $tweetMedias = $twRepo->getImagesForTweet($tweet["tweet_id"]); ?>;
-                <?php $tweetImgUrls = $tweetMedias[0]["tweet_img_url"]; $urls = explode(",",$tweetImgUrls); ?>
-               <?php if (count($urls) > 0) { ?>
-                 <?php foreach ($urls as $tweetMedia) { ?> 
-                        <div class="picture-post-ctn">
-                            <img class="picture-post" src=<?php echo ($tweetMedia) ?> alt="post pic example">
+                <div class="tweet-media">
+                    <div class="slider">
+                        <div class="slides">
+                            <?php
+                            $tweetMedias = $twRepo->getImagesForTweet($tweet["tweet_id"]);
+                            $tweetImgUrls = $tweetMedias[0]["tweet_img_url"];
+                            $urls = explode(",", $tweetImgUrls);
+                            if (count($urls) > 0) {
+                                foreach ($urls as $tweetMedia) {
+                                    ?>
+                                    <div class="picture-post-ctn">
+                                        <img class="picture-post" src="<?php echo ($tweetMedia) ?>" alt="post pic example">
+                                    </div>
+                                    <?php
+                                }
+                            }
+                            ?>
+                            <div class="next-prev-button">
+                                <div>
+                                    <button class="prev" onclick="prevSlide()">Previous</button>
+                                </div>
+                                <div>
+                                    <button class="next" onclick="nextSlide()">Next</button>
+                                </div>
+                            </div>
                         </div>
-                    <?php } ?>
-             <?php   } ?>
+                    </div>
+                </div>
                 <div class="created-at">
                     <?php echo ($tweet["krijuar_me"]) ?>
                 </div>
             </div>
-
-           
             <div class="delete-tweet">
-                <form action="<?php echo $SERVER['PHP_SELF']?>" id="myForm" method="POST">
-                    <input type="hidden" name="tweet_id" value=<?php echo($tweet["tweet_id"]) ?>>
-                    <input type="submit" name="delete-cmt-btn" >
-                         <img id="deleteButton" src="images/edit-delete.svg" alt="delete button">
-                 </input>
+                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" id="myForm" method="POST">
+                    <input type="hidden" name="tweet_id" value="<?php var_dump($tweet["tweet_id"]) ?>">
+                    <input type="submit" name="delete-cmt-btn">
+                    <img id="deleteButton" src="images/edit-delete.svg" alt="delete button">
                 </form>
             </div>
         </div>
     <?php } ?>
 </div>
-</div>
+
+<script>
+    let fullTweets = document.querySelectorAll('.tweets-ctn .full-tweet');
+
+    function showSlide(slideIndex, slides) {
+        if (slideIndex >= slides.length) {
+            slideIndex = 0;
+        }
+        if (slideIndex < 0) {
+            slideIndex = slides.length - 1;
+        }
+        slides.forEach((slide) => {
+            slide.style.display = "none";
+        });
+        slides[slideIndex].style.display = "block";
+        console.log("Slides length: ", slides.length);
+    }
+
+    function nextSlide(parentFullTweet) {
+        let slides = parentFullTweet.querySelectorAll('.slider .picture-post-ctn');
+        if (slides.length === 0) return;
+        let slideIndex = Array.from(slides).findIndex((slide) => slide.style.display === "block");
+        slideIndex++;
+        showSlide(slideIndex, slides);
+    }
+
+    function prevSlide(parentFullTweet) {
+        let slides = parentFullTweet.querySelectorAll('.slider .picture-post-ctn');
+        if (slides.length === 0) return;
+        let slideIndex = Array.from(slides).findIndex((slide) => slide.style.display === "block");
+        slideIndex--;
+        showSlide(slideIndex, slides);
+    }
+
+    fullTweets.forEach((fullTweet) => {
+        let slides = fullTweet.querySelectorAll('.slider .picture-post-ctn');
+
+        fullTweet.querySelector('.next').addEventListener('click', () => nextSlide(fullTweet));
+        fullTweet.querySelector('.prev').addEventListener('click', () => prevSlide(fullTweet));
+
+        showSlide(0, slides);
+    });
+</script>
