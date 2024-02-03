@@ -172,3 +172,68 @@ h2 {
   left: 50px;
   cursor: pointer;
 }
+
+/* .tweet-media {
+  position: relative;
+  overflow: hidden;
+} */
+
+/* .slider {
+  width: 100%;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+} */
+
+/* .picture-post-ctn {
+  flex: 0 0 auto;
+  width: 100%;
+  overflow: hidden;
+} */
+
+.next {
+  background-color: #8b9b95; /* Green */
+  border-radius: 30px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100px;
+}
+
+.prev {
+  display: flex;
+  justify-content: center;
+  background-color: #8b9b95; /* Green */
+  border-radius: 30px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  width: 100px;
+}
+
+.next:hover {
+  background-color: #6f7170;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+.prev:hover {
+  background-color: #6f7170;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.next-prev-button {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0 15px 0;
+}
