@@ -162,7 +162,7 @@ class TweetRepository
         return $comments;
     }
 
-    public function insertComment(int $tweetId, int $commenterId): void
+    public function insertComment(int $tweetId, int $commenterId, string $content): void
     {
         try {
             $query = "INSERT INTO interaksionet (tweet_id, perdoruesi_id, krijuar_me, lloji_interaksionit) VALUES (:tweet_id, :perdoruesi_id, CURRENT_TIMESTAMP(), :lloji_interaksionit)";
@@ -175,7 +175,7 @@ class TweetRepository
             $statement->execute();
             $statement->closeCursor();
 
-
+            self::insertCommentHelper($content, $commenterId, $tweetId);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
             echo "Error from INSERT COMMENT";

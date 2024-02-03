@@ -11,15 +11,11 @@ $_SESSION["tweet_id"] = $tweet_id;
 $acRepo = new AccountRepository();
 $twRepo = new TweetRepository();
 $tweet = $twRepo->getTweetById((int) $tweet_id)[0];
+$tweetComments = $twRepo->getCommentsForPost((int)$tweet_id);
 $formAction = $_SERVER['PHP_SELF'] . "?id=" . $_SESSION["tweet_id"] . "&activeUserId=" . $_SESSION["commenterId"];
 if (isset($_POST['post-comment'])) {
-    // $twRepo->insertComment((int)$_SESSION["tweet_id"], $_POST['tweet-new'], (int)$_SESSION["commenterId"]);
-    echo "Before inssertComment";
-    $twRepo->insertComment(1, 2);
-    echo "After inssertComment";
-    $twRepo->insertCommentHelper("test", 1, 2);
-    echo "Active user: ***" . $activeUserId;
-    // header('Location: tweet.php?id=' . $_SESSION["tweet_id"] . "&activeUserId=" . $_SESSION["commenterId"]);
+    $twRepo->insertComment((int)$_SESSION["tweet_id"], (int)$_SESSION["commenterId"], $_POST['tweet-new']);
+    header('Location: tweet.php?id=' . $_SESSION["tweet_id"] . "&activeUserId=" . $_SESSION["commenterId"]);
 }
 ?>
 
@@ -131,7 +127,18 @@ if (isset($_POST['post-comment'])) {
                         </div>
                     </form>
                 </div>
-
+                <div class="comments-ctn">
+                    <?php foreach($tweetComments as $tweetComment){ ?>
+                        <div class="comment-ctn">
+                            <div class="feed-profile-ctn">
+                                <img class="profile-pic" src=<?php echo ($acRepo->getProfilePicture((int) $tweetComment["komentuesi_id"])[0]) ?>
+                            </div>
+                            <div class="comment-content">
+                                <div style="color:white;"><?php echo($tweetComment["teksti_komentit"]) ?></div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
         </div>
     </div>
