@@ -15,7 +15,6 @@ $deleteAccount = $_GET["deleteAccount"];
 
 
 $id = $_GET['id'];
-var_dump($id);
 $account = $acRepo->getAccountById($id)[0];
 $tweets = $twRepo->getAllTweetsByUserId($id);
 
