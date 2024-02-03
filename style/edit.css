@@ -1,0 +1,174 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+}
+
+.user-cnt {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 22px;
+}
+
+.user-details {
+  display: flex;
+  height: 70%;
+  background-color: rgb(69, 66, 66);
+  border-radius: 30px;
+  width: 30%;
+  justify-content: space-around;
+  align-items: center;
+  text-decoration: none;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.anonuncements-ctn a {
+  pointer-events: none;
+  cursor: default;
+}
+
+.bottom-details {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  height: 40%;
+  background-color: #1c1b1b;
+  border-radius: 0px 0px 15px 15px;
+  align-items: center;
+}
+
+.username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  gap: 5%;
+  font-size: 38px;
+}
+
+.bottom-details span {
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.tweetCount {
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(69, 66, 66);
+  border-radius: 10px;
+  height: 90%;
+}
+
+.createdAt {
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(69, 66, 66);
+  border-radius: 10px;
+  height: 90%;
+}
+
+.interaksionet {
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(69, 66, 66);
+  border-radius: 10px;
+  height: 90%;
+}
+
+.edit-user-ctn {
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(69, 66, 66);
+  border-radius: 10px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  width: 8%;
+}
+
+.edit-user-ctn:hover {
+  cursor: pointer;
+}
+
+.tweets-ctn {
+  min-height: 150px;
+}
+.user-tweet {
+  /* border-top: rgb(255, 255, 255, 0.2) 1px solid;
+  border-bottom: rgb(255, 255, 255, 0.2) 1px solid; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 350px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 25px;
+  background-color: #100f0f;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 60%;
+}
+
+.picture-post {
+  max-height: 500px;
+}
+
+.tweet-body {
+  font-size: 18px;
+}
+
+.full-tweet {
+  align-items: center;
+  display: flex;
+  border-top: rgb(255, 255, 255, 0.2) 1px solid;
+  border-bottom: rgb(255, 255, 255, 0.2) 1px solid;
+  justify-content: center;
+}
+
+.delete-tweet {
+  display: flex;
+  min-height: 150px;
+  height: 80%;
+  width: 140px;
+  justify-content: center;
+  margin-left: 15px;
+  border-radius: 30px;
+}
+
+h2 {
+  font-size: 32px;
+  text-align: center;
+}
+
+.delete-tweet:hover {
+  background-color: grey;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+}
+
+#deleteButton {
+  width: 60px;
+}
+
+#back-arrow {
+  height: 50px;
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  cursor: pointer;
+}
