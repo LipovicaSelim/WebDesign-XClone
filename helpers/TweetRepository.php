@@ -219,4 +219,12 @@ class TweetRepository
 
         return $results;
     }
+
+    public function deleteTweetById(int $tweetId): void {
+             $query = "DELETE FROM tweets where tweet_id = $tweetId";
+            $statement = $this->dbConnection->prepare($query);
+            $success = $statement->execute();
+            $statement->closeCursor();
+    }
+        
 }
